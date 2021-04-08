@@ -1,0 +1,87 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ClientLauncher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ClientLauncher.Views.MainWindow"
+        Width="630" Height="500"
+        MinWidth="630" MinHeight="500"
+        MaxWidth="630" MaxHeight="500"
+        Icon="/Assets/polusgglogo.png"
+        Title="Polus.gg Installer"
+        ExtendClientAreaToDecorationsHint="True"
+        >
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    
+    <DockPanel>
+        <DockPanel.Styles>
+            <Style Selector="UserControl.BackgroundGradient">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Color="#1e0f35" Offset="0.0" />
+                                <GradientStop Color="#000000" Offset="1.0" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style Selector="styles|ColorZone">
+                <Setter Property="Background" Value="#0c0615"></Setter>
+            </Style>
+        </DockPanel.Styles>
+        <!-- <styles:ColorZone -->
+        <!--     VerticalAlignment="Stretch" HorizontalAlignment="Left" Mode="Custom" -->
+        <!--     DockPanel.Dock="Left"  -->
+        <!-- > -->
+        <!--     <DockPanel> -->
+        <!--         <DockPanel.Styles> -->
+        <!--             <Style Selector="Button"> -->
+        <!--                 <Setter Property="Padding" Value="12" /> -->
+        <!--             </Style> -->
+        <!--             <Style Selector="Button > StackPanel"> -->
+        <!--                 <Setter Property="Orientation" Value="Horizontal" /> -->
+        <!--             </Style> -->
+        <!--             <Style Selector="Button > StackPanel > TextBlock"> -->
+        <!--                 <Setter Property="FontSize" Value="18" /> -->
+        <!--                 <Setter Property="Padding" Value="12" /> -->
+        <!--             </Style> -->
+        <!--             <Style Selector="avalonia|MaterialIcon"> -->
+        <!--                 <Setter Property="Width" Value="32" /> -->
+        <!--                 <Setter Property="Height" Value="32" /> -->
+        <!--             </Style> -->
+        <!--         </DockPanel.Styles> -->
+        <!-- -->
+        <!--         <Button -->
+        <!--             Classes="Flat TransparentBack" -->
+        <!--             Foreground="{Binding LaunchButtonColor}" -->
+        <!--             Command="{Binding OpenViewLandingPage}" -->
+        <!--             DockPanel.Dock="Top" -->
+        <!--         > -->
+        <!--             <StackPanel> -->
+        <!--                 <avalonia:MaterialIcon Kind="ControllerClassic"/> -->
+        <!--                 <TextBlock Text="Launch"></TextBlock> -->
+        <!--             </StackPanel> -->
+        <!--         </Button> -->
+        <!--         <Button -->
+        <!--             Classes="Flat TransparentBack" -->
+        <!--             Foreground="{Binding SettingsButtonColor}" -->
+        <!--             Command="{Binding OpenViewSettings}" -->
+        <!--             DockPanel.Dock="Bottom" -->
+        <!--         > -->
+        <!--             <StackPanel> -->
+        <!--                 <avalonia:MaterialIcon Kind="Wrench" /> -->
+        <!--                 <TextBlock Text="Settings"></TextBlock> -->
+        <!--             </StackPanel> -->
+        <!--         </Button> -->
+        <!--         <TextBlock></TextBlock> -->
+        <!--     </DockPanel> -->
+        <!-- </styles:ColorZone> -->
+        <UserControl Classes="BackgroundGradient" Content="{Binding CurrentView}"></UserControl>
+    </DockPanel>
+</Window>
