@@ -87,29 +87,36 @@ namespace ClientLauncher.ViewModels.LandingPage
                         Console.WriteLine($"Couldn't install Polus.gg preloader to  \"{install.Location}\".");
                     }
                     
-                    
-                    var downloadable = await DownloadService.GetGamePluginDownloadable(
-                        GameIntegrityService.AmongUsVersion(install)
-                    );
-                    
-                    bool hashFound = false;
-                    foreach (var filePath in GameIntegrityService.FindPolusModFiles(install))
+                    try
                     {
-                        await using var file = File.OpenRead(filePath);
-                        // If hash has already been found and current file's hash is equal to latest hash,
-                        // current file is a duplicate of the already-installed latest plugin version
-                        if (downloadable.MD5Hash != file.MD5Hash() || hashFound)
-                            File.Delete(filePath);
-                        else
-                            hashFound = true;
+                        var downloadable = await DownloadService.GetGamePluginDownloadable(
+                            GameIntegrityService.AmongUsVersion(install)
+                        );
+                    
+                        bool hashFound = false;
+                        foreach (var filePath in GameIntegrityService.FindPolusModFiles(install))
+                        {
+                            // If hash has already been found and current file's hash is equal to latest hash,
+                            // current file is a duplicate of the already-installed latest plugin version
+                            if (FileExtensions.FileEqualsMD5Hash(filePath, downloadable.MD5Hash) || hashFound)
+                                File.Delete(filePath);
+                            else
+                                hashFound = true;
+                        }
+                        
+                        if (!hashFound)
+                        {
+                            await using var stream = await DownloadService.DownloadPlugin(downloadable);
+                            await stream.CopyToAsync(File.OpenWrite(
+                                Path.Combine(install.Location, "BepInEx", "plugins", downloadable.DllName)
+                            ));
+                        }
                     }
-
-                    if (!hashFound)
+                    catch (Exception)
                     {
-                        await using var stream = await DownloadService.DownloadPlugin(downloadable);
-                        await stream.CopyToAsync(File.OpenWrite(
-                            Path.Combine(install.Location, "BepInEx", "plugins", downloadable.DllName)
-                        ));
+                        IsInstallProgressing = false;
+                        await WarnDialog.Handle($"Couldn't install Polusgg mod to \"{install.Location}\"");
+                        return;
                     }
 
                     await GameLaunchService.LaunchGame(install);

@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ClientLauncher.Views.DialogModal.DialogWindow"
         SizeToContent="WidthAndHeight"
+        MaxWidth="800"
         Title="Polus.gg Launcher">
 
     <Design.DataContext>
