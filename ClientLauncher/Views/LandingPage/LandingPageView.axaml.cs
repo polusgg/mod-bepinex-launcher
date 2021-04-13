@@ -1,11 +1,13 @@
 using System.Reactive;
+using System.Reactive.Disposables;
 using System.Threading.Tasks;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using Avalonia.VisualTree;
+using ClientLauncher.ViewModels.DialogModal;
 using ClientLauncher.ViewModels.LandingPage;
+using ClientLauncher.Views.DialogModal;
 using ReactiveUI;
 
 namespace ClientLauncher.Views.LandingPage
@@ -14,15 +16,34 @@ namespace ClientLauncher.Views.LandingPage
     {
         public LandingPageView()
         {
-            this.WhenActivated(d => d(ViewModel.ShowDialog.RegisterHandler(DoShowDialogAsync)));
+            this.WhenActivated(block =>
+            {
+                ViewModel.ShowDialog.RegisterHandler(DoShowDialogAsync).DisposeWith(block);
+                ViewModel.WarnDialog.RegisterHandler(DoWarnDialogAsync).DisposeWith(block);
+            });
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async Task DoShowDialogAsync(InteractionContext<Unit, string?> interactionContext)
+        private async Task DoShowDialogAsync(InteractionContext<Unit, string?> context)
         {
             var dialog = new OpenFolderDialog();
             var result = await dialog.ShowAsync((Window) this.GetVisualRoot());
-            interactionContext.SetOutput(result);
+            context.SetOutput(result);
+        }
+
+        private async Task DoWarnDialogAsync(InteractionContext<string, Unit> context)
+        {
+            var dialog = new DialogWindow()
+            {
+                DataContext = new DialogWindowViewModel
+                {
+                    DialogString = context.Input
+                },
+                SystemDecorations = SystemDecorations.None,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            await dialog.ShowDialog<Unit>((Window) this.GetVisualRoot());
+            context.SetOutput(Unit.Default);
         }
     }
 }

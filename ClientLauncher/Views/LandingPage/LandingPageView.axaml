@@ -28,7 +28,14 @@
         </StackPanel>
         
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
-            <Button Classes="Dark" Background="#4c1d95" Width="128" Padding="12">
+            <ProgressBar 
+                IsIndeterminate="True"
+                Width="128"
+                IsVisible="{Binding IsInstallProgressing}"
+                DockPanel.Dock="Top" />
+            <Button Classes="Dark" Background="#4c1d95" 
+                    Width="128" Padding="12"
+                    Command="{Binding InstallGame}">
                 <TextBlock FontSize="18">Install</TextBlock>
             </Button>
             <Image Source="/Assets/cliffs.png" HorizontalAlignment="Stretch"/>
