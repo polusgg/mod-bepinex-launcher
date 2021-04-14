@@ -47,11 +47,11 @@ namespace ClientLauncher.ViewModels.LandingPage
                 else
                     await WarnDialog.Handle($"\"{amongUsLocation}\"  is not a valid install location");
             });
-            
+
             Autodetect = ReactiveCommand.CreateFromTask(async () =>
             {
                 AmongUsLocation = GameLocatorService.FindAmongUsSteamInstallDir() ?? AmongUsLocation;
-            })
+            });
 
             InstallGame = ReactiveCommand.CreateFromTask(async () =>
             {

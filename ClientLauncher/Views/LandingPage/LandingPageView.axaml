@@ -54,18 +54,6 @@
                         <Button Classes="Outline Light" 
                                 DockPanel.Dock="Right" 
                                 Height="28"
-                                Command="{Binding Autodetect}">
-                            <StackPanel Orientation="Horizontal">
-                                <avalonia:MaterialIcon Kind="FolderEditOutline"
-                                                       Width="20" Height="20" 
-                                                       Margin="0 0 10 0" 
-                                                       Foreground="#7e57c2"/>
-                                <TextBlock VerticalAlignment="Center">Autodetect</TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <Button Classes="Outline Light" 
-                                DockPanel.Dock="Right" 
-                                Height="28"
                                 Command="{Binding ChooseFileCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <avalonia:MaterialIcon Kind="FolderEditOutline"
@@ -73,6 +61,19 @@
                                                        Margin="0 0 10 0" 
                                                        Foreground="#7e57c2"/>
                                 <TextBlock VerticalAlignment="Center">Change Folder</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Classes="Outline Light" 
+                                DockPanel.Dock="Right" 
+                                Height="28"
+                                Margin="0 0 12 0"
+                                Command="{Binding Autodetect}">
+                            <StackPanel Orientation="Horizontal">
+                                <avalonia:MaterialIcon Kind="FileSearchOutline"
+                                                       Width="20" Height="20" 
+                                                       Margin="0 0 10 0" 
+                                                       Foreground="#7e57c2"/>
+                                <TextBlock VerticalAlignment="Center">Autodetect</TextBlock>
                             </StackPanel>
                         </Button>
                         <TextBlock></TextBlock>

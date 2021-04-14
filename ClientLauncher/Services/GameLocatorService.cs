@@ -12,7 +12,7 @@ namespace ClientLauncher.Services
     {
         public static string? FindAmongUsSteamInstallDir()
         {
-            string? steamApps = "";
+            string steamApps = "";
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 steamApps = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".steam", "steam", "steamapps");
@@ -20,18 +20,17 @@ namespace ClientLauncher.Services
                 steamApps = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Library", "Application Support", "Steam", "steamapps");
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                object steamPath = Registry.GetValue(@"HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", "") ?? null;
+                object steamPath = Registry.GetValue(@"HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", "") ?? "";
                 if ((string) steamPath != "")
                     steamApps = Path.Combine((string) steamPath, "steamapps");
+                else
+                    return null;
             }
 
             if (steamApps == "" || !Directory.Exists(steamApps))
                 return null;
 
-            var libraries = new List<string>
-            {
-                steamApps
-            };
+            var libraries = new List<string> { steamApps };
 
             var vdf = Path.Combine(steamApps, "libraryfolders.vdf");
             if (File.Exists(vdf))
@@ -49,13 +48,11 @@ namespace ClientLauncher.Services
 
             foreach (var library in libraries)
             {
-                var path = Path.Combine(library, "common", "945260");
+                var path = Path.Combine(library, "common", "Among Us");
                 if (Directory.Exists(path))
-                {
                     return path;
-                }
             }
-
+            
             return null;
         }
     }
