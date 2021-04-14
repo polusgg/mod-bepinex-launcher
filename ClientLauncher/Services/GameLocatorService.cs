@@ -20,7 +20,7 @@ namespace ClientLauncher.Services
                 steamApps = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Library", "Application Support", "Steam", "steamapps");
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                object steamPath = Registry.GetValue(@"HKEY_CURRENT_USER\\Software\\Valve\\Steam", "SteamPath", "") ?? "";
+                object steamPath = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam")?.GetValue("SteamPath") ?? "";
                 if ((string) steamPath != "")
                     steamApps = Path.Combine((string) steamPath, "steamapps");
                 else

@@ -11,8 +11,7 @@
         MaxWidth="630" MaxHeight="500"
         Icon="/Assets/polusgglogo.png"
         Title="Polus.gg Installer"
-        ExtendClientAreaToDecorationsHint="True"
-        >
+>
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
