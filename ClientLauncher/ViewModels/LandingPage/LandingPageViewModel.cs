@@ -102,9 +102,8 @@ namespace ClientLauncher.ViewModels.LandingPage
                         bool hashFound = false;
                         foreach (var filePath in GameIntegrityService.FindPolusModFiles(install))
                         {
-                            // If hash has already been found and current file's hash is equal to latest hash,
-                            // current file is a duplicate of the already-installed latest plugin version
-                            if (FileExtensions.FileEqualsMD5Hash(filePath, downloadable.MD5Hash) || hashFound)
+                            // If hash has already been found, delete all other Polus.gg-like plugins
+                            if (!FileExtensions.FileEqualsMD5Hash(filePath, downloadable.MD5Hash) || hashFound)
                                 File.Delete(filePath);
                             else
                                 hashFound = true;
