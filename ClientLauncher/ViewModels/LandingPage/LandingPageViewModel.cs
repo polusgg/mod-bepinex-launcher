@@ -50,7 +50,7 @@ namespace ClientLauncher.ViewModels.LandingPage
 
             Autodetect = ReactiveCommand.CreateFromTask(async () =>
             {
-                AmongUsLocation = GameLocatorService.FindAmongUsSteamInstallDir() ?? AmongUsLocation;
+                AmongUsLocation = await SteamLocatorService.FindAmongUsSteamInstallDir() ?? AmongUsLocation;
             });
 
             InstallGame = ReactiveCommand.CreateFromTask(async () =>
@@ -124,7 +124,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                         return;
                     }
 
-                    await GameLaunchService.LaunchGame(install);
+                    await install.LaunchGame();
 
                 }
                 catch (Exception e)
