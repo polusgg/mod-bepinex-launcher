@@ -9,8 +9,8 @@ namespace ClientLauncher.Extensions
         public static string MD5Hash(this Stream stream)
         {
             using var md5 = MD5.Create();
-            var md5hash = md5.ComputeHash(stream);
-            return BitConverter.ToString(md5hash).Replace("-", "");
+            var md5Hash = md5.ComputeHash(stream);
+            return BitConverter.ToString(md5Hash).Replace("-", "");
         }
 
         public static byte[] ReadByteArray(this Stream stream)

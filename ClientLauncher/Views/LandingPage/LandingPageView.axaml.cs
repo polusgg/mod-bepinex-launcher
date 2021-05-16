@@ -33,7 +33,7 @@ namespace ClientLauncher.Views.LandingPage
 
         private async Task DoWarnDialogAsync(InteractionContext<string, Unit> context)
         {
-            var dialog = new DialogWindow()
+            var dialog = new DialogWindow
             {
                 DataContext = new DialogWindowViewModel
                 {

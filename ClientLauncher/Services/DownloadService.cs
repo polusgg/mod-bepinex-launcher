@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using ClientLauncher.Extensions;
 using ClientLauncher.Models;
-using ModClientPreloader.Models;
 
 namespace ClientLauncher.Services
 {
     public static class DownloadService
     {
-        private static readonly string[] BEPINEX_FILES =
+        private static readonly string[] BepinexFiles =
         {
             "winhttp.dll",
             "doorstop_config.ini",
@@ -51,7 +50,7 @@ namespace ClientLauncher.Services
 
         private static void CleanInstalledBepInEx(GameInstall install)
         {
-            foreach (var file in BEPINEX_FILES)
+            foreach (var file in BepinexFiles)
             {
                 var fullPath = Path.Combine(install.Location, file);
                 if (File.Exists(fullPath))

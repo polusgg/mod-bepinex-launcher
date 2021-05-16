@@ -1,4 +1,4 @@
-namespace ModClientPreloader.Models
+namespace ClientLauncher.Models
 {
     public class GamePluginDownloadable
     {
