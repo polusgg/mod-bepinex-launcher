@@ -4,15 +4,15 @@ namespace ClientLauncher.Extensions
 {
     public static class FileExtensions
     {
-        public static string MD5Hash(string filePath)
+        public static string SHA256Hash(string filePath)
         {
             using var file = File.OpenRead(filePath);
-            return file.MD5Hash();
+            return file.SHA256Hash();
         }
         
-        public static bool FileEqualsMD5Hash(string filePath, string md5Hash)
+        public static bool FileEqualsSHA256Hash(string filePath, string sha256hash)
         {
-            return MD5Hash(filePath) == md5Hash;
+            return SHA256Hash(filePath) == sha256hash;
         }
     }
 }

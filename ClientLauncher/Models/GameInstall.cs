@@ -25,6 +25,6 @@ namespace ClientLauncher.Models
 
         // Specific paths for downloaded asset hashes
         public string BepInExVersionFile => Path.Combine(BepInExFolder, "version.txt");
-        public string PreloaderHashFile => Path.Combine(PreloaderFolder, "polusgg-preloader.md5hash");
+        public string PreloaderHashFile => Path.Combine(PreloaderFolder, "polusgg-preloader.sha256hash");
     }
 }

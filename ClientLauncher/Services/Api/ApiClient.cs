@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using ClientLauncher.Extensions;
+using ClientLauncher.Models;
 
 namespace ClientLauncher.Services.Api
 {
@@ -20,9 +21,9 @@ namespace ClientLauncher.Services.Api
             return await stream.SaveStreamToTempFile(name ?? new Guid().ToString());
         }
 
-        public async Task<T?> GetFromJsonAsync<T>(string url)
+        public async Task<PluginDownloadManifest?> GetPluginDownloadManifestAsync(string version)
         {
-            return await _client.GetFromJsonAsync<T>(url);
+            return await _client.GetFromJsonAsync<PluginDownloadManifest>($"{Context.BucketUrl}/{version}/manifest.json");
         }
 
         public void Dispose()

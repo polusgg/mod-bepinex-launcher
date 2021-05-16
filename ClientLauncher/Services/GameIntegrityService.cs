@@ -23,7 +23,7 @@ namespace ClientLauncher.Services
         
         public static bool PreloaderPluginExists(GameInstall install)
         {
-            return File.Exists(Path.Combine(install.Location, "BepInEx", "patchers", "polusgg-preloader.md5hash"));
+            return File.Exists(install.PreloaderHashFile);
         }
 
         public static IEnumerable<string> FindPolusModFiles(GameInstall install)

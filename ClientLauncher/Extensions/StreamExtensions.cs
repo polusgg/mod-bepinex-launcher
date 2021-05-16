@@ -7,11 +7,11 @@ namespace ClientLauncher.Extensions
 {
     public static class StreamExtensions
     {
-        public static string MD5Hash(this Stream stream)
+        public static string SHA256Hash(this Stream stream)
         {
-            using var md5 = MD5.Create();
-            var md5Hash = md5.ComputeHash(stream);
-            return BitConverter.ToString(md5Hash).Replace("-", "");
+            using var sha256 = SHA256.Create();
+            var sha256Hash = sha256.ComputeHash(stream);
+            return BitConverter.ToString(sha256Hash).Replace("-", "");
         }
 
         public static byte[] ReadByteArray(this Stream stream)

@@ -20,9 +20,9 @@ namespace ClientLauncher.Services
             var releaseAsset = latest.Assets.First(x => x.Name.Contains(".dll"));
 
             var downloadFilePath = await Context.ApiClient.DownloadFileAsync(releaseAsset.BrowserDownloadUrl);
-            var downloadFileHash = FileExtensions.MD5Hash(downloadFilePath);
+            var downloadFileHash = FileExtensions.SHA256Hash(downloadFilePath);
             
-            if (File.ReadAllText(install.PreloaderHashFile) != downloadFileHash)
+            if (downloadFileHash != GameVersionService.PreloaderPatcherHash(install))
             {
                 Directory.Delete(install.PreloaderFolder, true);
                 Directory.CreateDirectory(install.PreloaderFolder);

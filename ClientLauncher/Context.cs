@@ -17,7 +17,7 @@ namespace ClientLauncher
         
         
         public static string PreloaderGithubOrg { get; } = "Polusgg";
-        public static string PreloaderGithubRepo { get; } = "mod-client-preloader";
+        public static string PreloaderGithubRepo { get; } = "mod-bepinex-preloader";
 
         public static string BucketUrl { get; } = "https://polusgg-mod-client.nyc3.digitaloceanspaces.com";
         public static string PolusModPrefix { get; } = "polusgg";

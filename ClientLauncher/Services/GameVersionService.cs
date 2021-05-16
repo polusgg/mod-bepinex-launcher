@@ -22,10 +22,5 @@ namespace ClientLauncher.Services
         {
             return GameIntegrityService.PreloaderPluginExists(install) ? File.ReadAllText(install.PreloaderHashFile) : "";
         }
-        
-        public static string AmongUsVersion(GameInstall install)
-        {
-            return GameIntegrityService.AmongUsGameExists(install) ? install.ParseVersion() : "";
-        }
     }
 }
