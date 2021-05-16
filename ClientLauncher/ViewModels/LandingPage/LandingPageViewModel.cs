@@ -50,7 +50,7 @@ namespace ClientLauncher.ViewModels.LandingPage
 
             Autodetect = ReactiveCommand.CreateFromTask(async () =>
             {
-                AmongUsLocation = await SteamLocatorService.FindAmongUsSteamInstallDir() ?? AmongUsLocation;
+                AmongUsLocation = await SteamLocatorService.FindAmongUsSteamInstallDirAsync() ?? AmongUsLocation;
             });
 
             InstallGame = ReactiveCommand.CreateFromTask(async () =>
@@ -72,8 +72,7 @@ namespace ClientLauncher.ViewModels.LandingPage
 
                     try
                     {
-                        var currentVerId = GameIntegrityService.BepInExVersion(install);
-                        await DownloadService.DownloadBepInEx(install, currentVerId);
+                        await DownloadService.DownloadBepInExAsync(install);
                     }
                     catch (Exception)
                     {
@@ -84,8 +83,7 @@ namespace ClientLauncher.ViewModels.LandingPage
 
                     try
                     {
-                        var preloaderPatcherHash = GameIntegrityService.PreloaderPatcherHash(install);
-                        await DownloadService.DownloadPreloaderPatcher(install, preloaderPatcherHash);
+                        await DownloadService.DownloadPreloaderPatcherAsync(install);
                     }
                     catch (Exception)
                     {
@@ -95,27 +93,10 @@ namespace ClientLauncher.ViewModels.LandingPage
                     
                     try
                     {
-                        var downloadable = await DownloadService.GetGamePluginDownloadable(
-                            GameIntegrityService.AmongUsVersion(install)
-                        );
-                    
-                        bool hashFound = false;
                         foreach (var filePath in GameIntegrityService.FindPolusModFiles(install))
-                        {
-                            // If hash has already been found, delete all other Polus.gg-like plugins
-                            if (!FileExtensions.FileEqualsMD5Hash(filePath, downloadable.MD5Hash) || hashFound)
-                                File.Delete(filePath);
-                            else
-                                hashFound = true;
-                        }
+                            File.Delete(filePath);
                         
-                        if (!hashFound)
-                        {
-                            await using var stream = await DownloadService.DownloadPlugin(downloadable);
-                            await stream.CopyToAsync(File.OpenWrite(
-                                Path.Combine(install.Location, "BepInEx", "plugins", downloadable.DllName)
-                            ));
-                        }
+                        await DownloadService.DownloadPluginsAsync(install);
                     }
                     catch (Exception)
                     {

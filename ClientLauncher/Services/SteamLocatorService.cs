@@ -11,9 +11,9 @@ namespace ClientLauncher.Services
 {
     public static class SteamLocatorService
     {
-        public static async Task<string?> FindAmongUsSteamInstallDir()
+        public static async Task<string?> FindAmongUsSteamInstallDirAsync()
         {
-            string steamApps = "";
+            string steamApps = string.Empty;
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 steamApps = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".steam", "steam", "steamapps");

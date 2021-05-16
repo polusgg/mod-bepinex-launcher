@@ -26,17 +26,15 @@ namespace ClientLauncher.Services
             return File.Exists(Path.Combine(install.Location, "BepInEx", "patchers", "polusgg-preloader.md5hash"));
         }
 
-        
-        
         public static IEnumerable<string> FindPolusModFiles(GameInstall install)
         {
-            var pluginPath = Path.Combine(install.Location, "BepInEx", "plugins");
-            if (!Directory.Exists(pluginPath))
-                Directory.CreateDirectory(pluginPath);
+            var pluginFolder = install.PluginFolder;
+            if (!Directory.Exists(pluginFolder))
+                Directory.CreateDirectory(pluginFolder);
 
-            return Directory.EnumerateFiles(pluginPath)
+            return Directory.EnumerateFiles(pluginFolder)
                 .Where(fileName => fileName.ToLower().Contains(Context.PolusModPrefix))
-                .Select(file => Path.Combine(pluginPath, file));
+                .Select(file => Path.Combine(pluginFolder, file));
         }
     }
 }
