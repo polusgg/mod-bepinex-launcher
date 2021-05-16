@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Gameloop.Vdf;
 using Gameloop.Vdf.Linq;
 using Microsoft.Win32;
 
 namespace ClientLauncher.Services
 {
-    public static class GameLocatorService
+    public static class SteamLocatorService
     {
-        public static string? FindAmongUsSteamInstallDir()
+        public static async Task<string?> FindAmongUsSteamInstallDir()
         {
             string steamApps = "";
 
@@ -35,7 +36,7 @@ namespace ClientLauncher.Services
             var vdf = Path.Combine(steamApps, "libraryfolders.vdf");
             if (File.Exists(vdf))
             {
-                var libraryFolders = VdfConvert.Deserialize(File.ReadAllText(vdf));
+                var libraryFolders = VdfConvert.Deserialize(await File.ReadAllTextAsync(vdf));
 
                 foreach (var libraryFolder in libraryFolders.Value.Children<VProperty>())
                 {
