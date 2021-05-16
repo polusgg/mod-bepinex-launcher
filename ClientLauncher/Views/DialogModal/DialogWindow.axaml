@@ -8,7 +8,8 @@
         x:Class="ClientLauncher.Views.DialogModal.DialogWindow"
         SizeToContent="WidthAndHeight"
         MaxWidth="800"
-        Title="Polus.gg Launcher">
+        Title="Polus.gg Launcher"
+        ExtendClientAreaToDecorationsHint="True">
 
     <Design.DataContext>
         <dialogModal:DialogWindowViewModel />
