@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ClientLauncher.Models;
-using ModClientPreloader.Services;
 
 namespace ClientLauncher.Services
 {
@@ -27,33 +26,7 @@ namespace ClientLauncher.Services
             return File.Exists(Path.Combine(install.Location, "BepInEx", "patchers", "polusgg-preloader.md5hash"));
         }
 
-        public static uint BepInExVersion(GameInstall install)
-        {
-            if (BepInExExists(install))
-            {
-                var versionFile = Path.Combine(install.Location, "BepInEx", "version.txt");
-                if (File.Exists(versionFile) &&
-                    uint.TryParse(File.ReadAllText(versionFile), out uint versionId))
-                    return versionId;
-            }
-
-            return 0;
-        }
-
-        public static string PreloaderPatcherHash(GameInstall install)
-        {
-            if (PreloaderPluginExists(install))
-                return File.ReadAllText(
-                    Path.Combine(install.Location, "BepInEx", "patchers", "polusgg-preloader.md5hash"));
-            return "";
-        }
         
-        public static string AmongUsVersion(GameInstall install)
-        {
-            if (AmongUsGameExists(install))
-                return GameVersionParser.Parse(Path.Combine(install.Location, "Among Us_Data", "globalgamemanagers"));
-            return "";
-        }
         
         public static IEnumerable<string> FindPolusModFiles(GameInstall install)
         {
