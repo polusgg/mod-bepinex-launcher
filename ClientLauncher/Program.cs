@@ -5,6 +5,7 @@ using Avalonia.ReactiveUI;
 using ClientLauncher.Models;
 using Newtonsoft.Json;
 using Octokit;
+using ApiClient = ClientLauncher.Services.Api.ApiClient;
 
 namespace ClientLauncher
 {
@@ -16,11 +17,12 @@ namespace ClientLauncher
         public static void Main(string[] args)
         {
             Context.GithubClient = new GitHubClient(new ProductHeaderValue("polusgg-client-launcher"));
-            
+            Context.ApiClient = new ApiClient();
             CreateConfiguration();
             
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
             
+            Context.ApiClient.Dispose();
             SaveConfiguration();
         }
 

@@ -2,6 +2,6 @@ namespace ClientLauncher.Models
 {
     public class Configuration
     {
-        public string AmongUsLocation = "";
+        public string AmongUsLocation = string.Empty;
     }
 }

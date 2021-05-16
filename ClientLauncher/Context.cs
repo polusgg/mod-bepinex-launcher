@@ -2,12 +2,15 @@ using System;
 using System.IO;
 using ClientLauncher.Models;
 using Octokit;
+using ApiClient = ClientLauncher.Services.Api.ApiClient;
 
 namespace ClientLauncher
 {
     public static class Context
     {
-        public static GitHubClient? GithubClient { get; set; }
+        public static GitHubClient GithubClient { get; set; }
+        
+        public static ApiClient ApiClient { get; set; }
 
         public static string BepInExGithubOrg { get; } = "NuclearPowered";
         public static string BepInExGithubRepo { get; } = "BepInEx";
