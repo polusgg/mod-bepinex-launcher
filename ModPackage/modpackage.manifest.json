@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
+      "sha256": "CAF96A53D3427771558845216864EA50F84D0D5D2A7378C0F763FF6418623820"
+    }
+  ]
+}

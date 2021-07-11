@@ -67,7 +67,7 @@
                                 DockPanel.Dock="Right" 
                                 Height="28"
                                 Margin="0 0 12 0"
-                                Command="{Binding Autodetect}">
+                                Command="{Binding SteamAutodetect}">
                             <StackPanel Orientation="Horizontal">
                                 <avalonia:MaterialIcon Kind="FileSearchOutline"
                                                        Width="20" Height="20" 
@@ -80,7 +80,7 @@
                     </DockPanel>
                     <TextBox UseFloatingWatermark="False" Watermark="You don't have Among Us installed ?!"
                              FontWeight="Light"
-                             Text="{Binding AmongUsLocation}" />
+                             Text="{Binding VanillaAmongUsLocation}" />
                 </StackPanel>
             </styles:Card>
         </Panel>

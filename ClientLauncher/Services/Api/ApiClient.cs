@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -15,15 +16,21 @@ namespace ClientLauncher.Services.Api
             _client = new HttpClient();
         }
 
-        public async Task<string> DownloadFileAsync(string downloadUrl, string? name = null)
+        public async Task<FileInfo> DownloadFileAsync(string downloadUrl, string? name = null)
         {
+            Console.WriteLine(downloadUrl);
             var stream = await _client.GetStreamAsync(downloadUrl);
-            return await stream.SaveStreamToTempFile(name ?? new Guid().ToString());
+            return await stream.SaveStreamToTempFile(name ?? Guid.NewGuid().ToString());
         }
 
-        public async Task<PluginDownloadManifest?> GetPluginDownloadManifestAsync(string version)
+        public async Task<ModPackageManifest> GetModPackageManifestAsync(string version)
         {
-            return await _client.GetFromJsonAsync<PluginDownloadManifest>($"{Context.BucketUrl}/{version}/manifest.json");
+            Console.WriteLine($"{Context.BucketUrl}/{version}/{ModPackageManifest.ManifestFileName}");
+            var manifest = await _client.GetFromJsonAsync<ModPackageManifest>($"{Context.BucketUrl}/{version}/{ModPackageManifest.ManifestFileName}");
+            if (manifest is null)
+                throw new InvalidOperationException($"Download manifest.json was not found for version {version}");
+            
+            return manifest;
         }
 
         public void Dispose()

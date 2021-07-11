@@ -8,7 +8,6 @@
         x:Class="ClientLauncher.Views.MainWindow"
         Width="630" Height="500"
         MinWidth="630" MinHeight="500"
-        MaxWidth="630" MaxHeight="500"
         Icon="/Assets/polusgglogo.png"
         Title="Polus.gg Installer"
 >

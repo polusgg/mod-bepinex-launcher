@@ -18,7 +18,7 @@ namespace ClientLauncher.Views.LandingPage
         {
             this.WhenActivated(block =>
             {
-                ViewModel.ShowDialog.RegisterHandler(DoShowDialogAsync).DisposeWith(block);
+                ViewModel.FileChooserDialog.RegisterHandler(DoShowDialogAsync).DisposeWith(block);
                 ViewModel.WarnDialog.RegisterHandler(DoWarnDialogAsync).DisposeWith(block);
             });
             AvaloniaXamlLoader.Load(this);

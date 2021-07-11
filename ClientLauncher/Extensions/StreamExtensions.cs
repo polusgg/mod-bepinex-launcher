@@ -7,7 +7,7 @@ namespace ClientLauncher.Extensions
 {
     public static class StreamExtensions
     {
-        public static string SHA256Hash(this Stream stream)
+        public static string Sha256Hash(this Stream stream)
         {
             using var sha256 = SHA256.Create();
             var sha256Hash = sha256.ComputeHash(stream);
@@ -21,9 +21,9 @@ namespace ClientLauncher.Extensions
             return memoryStream.ToArray();
         }
         
-        public static async Task<string> SaveStreamToTempFile(this Stream inStream, string fileName)
+        public static async Task<FileInfo> SaveStreamToTempFile(this Stream inStream, string fileName)
         {
-            var tempPathRoot = Path.Combine(Path.GetTempPath(), "polusgg-client-launcher");
+            var tempPathRoot = Path.Combine(Path.GetTempPath(), "polusgg-client");
             if (File.Exists(tempPathRoot))
                 File.Delete(tempPathRoot);
 
@@ -37,7 +37,7 @@ namespace ClientLauncher.Extensions
             await using var file = File.OpenWrite(tempPath);
             await inStream.CopyToAsync(file);
             
-            return tempPath;
+            return new FileInfo(tempPath);
         }
     }
 }

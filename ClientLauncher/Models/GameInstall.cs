@@ -20,11 +20,10 @@ namespace ClientLauncher.Models
 
         // Standard BepInEx paths
         public string BepInExFolder => Path.Combine(Location, "BepInEx");
-        public string PreloaderFolder => Path.Combine(BepInExFolder, "patchers");
-        public string PluginFolder => Path.Combine(BepInExFolder, "plugins");
+        public string BepInExMonoFolder => Path.Combine(Location, "mono");
 
-        // Specific paths for downloaded asset hashes
+        // Specific paths for downloaded hashes/manifests
         public string BepInExVersionFile => Path.Combine(BepInExFolder, "version.txt");
-        public string PreloaderHashFile => Path.Combine(PreloaderFolder, "polusgg-preloader.sha256hash");
+        public string ModPackageManifestJson => Path.Combine(Location, ModPackageManifest.ManifestFileName);
     }
 }

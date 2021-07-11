@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientLauncher", "ClientLauncher\ClientLauncher.csproj", "{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModPackageGenerator", "ModPackageGenerator\ModPackageGenerator.csproj", "{B27F9C78-FB4A-4D74-8470-C46330134407}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

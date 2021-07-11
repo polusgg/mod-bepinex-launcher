@@ -5,6 +5,7 @@ using Avalonia.ReactiveUI;
 using ClientLauncher.Models;
 using Newtonsoft.Json;
 using Octokit;
+using Steamworks;
 using ApiClient = ClientLauncher.Services.Api.ApiClient;
 
 namespace ClientLauncher
@@ -20,6 +21,8 @@ namespace ClientLauncher
             Context.ApiClient = new ApiClient();
             CreateConfiguration();
             
+            SteamClient.Init(1653240);
+
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
             
             Context.ApiClient.Dispose();

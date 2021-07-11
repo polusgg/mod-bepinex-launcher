@@ -2,10 +2,10 @@ using Newtonsoft.Json;
 
 namespace ClientLauncher.Models
 {
-    public class DownloadablePlugin
+    public class ModPackageFile
     {
-        [JsonProperty("dllName")]
-        public string DllName { get; set; } = string.Empty;
+        [JsonProperty("installPath")]
+        public string InstallPath { get; set; } = string.Empty;
         
         [JsonProperty("downloadUrl")]
         public string DownloadUrl { get; set; } = string.Empty;
