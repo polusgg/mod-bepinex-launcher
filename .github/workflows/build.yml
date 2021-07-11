@@ -37,5 +37,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        file: "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*;ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/*.dll;ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/*.so"
+        file: "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*;!**.xml;!**.pdb"
         draft: false
