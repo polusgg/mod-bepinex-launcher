@@ -28,9 +28,11 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: "./ClientLauncher"
     
     - name: Publish for ${{ matrix.os }}
       run: dotnet publish -c Release -r ${{ matrix.publishRID }} -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained=true -p:IncludeNativeLibrariesForSelfExtract=true
+      working-directory: "./ClientLauncher"
       
     - name: Upload Release Asset
       uses: xresloader/upload-to-github-release@v1.2.2
