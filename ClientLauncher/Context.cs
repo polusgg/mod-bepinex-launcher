@@ -9,21 +9,23 @@ namespace ClientLauncher
     public static class Context
     {
         public static GitHubClient GithubClient { get; set; }
-        
         public static ApiClient ApiClient { get; set; }
 
+        
         public static string BepInExGithubOrg => "NuclearPowered";
         public static string BepInExGithubRepo => "BepInEx";
-
         public static string BucketUrl => "https://launcher.asset.polus.gg";
 
+        
         public static string DataPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             ".polusgg-client");
+        public static string ConfigPath => Path.Combine(DataPath, "config.json");
 
+        
         public static string ModdedAmongUsLocation => Path.Combine(DataPath, "modded");
 
-        public static string ConfigPath => Path.Combine(DataPath, "config.json");
+        
         public static Configuration Configuration { get; set; } = new();
     }
 }

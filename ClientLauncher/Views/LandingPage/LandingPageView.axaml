@@ -36,7 +36,7 @@
             <Button Classes="Dark" Background="#4c1d95" 
                     Width="128" Padding="12"
                     Command="{Binding InstallGame}">
-                <TextBlock FontSize="18">Install</TextBlock>
+                <TextBlock FontSize="18">Launch</TextBlock>
             </Button>
             <Image Source="/Assets/cliffs.png" HorizontalAlignment="Stretch"/>
         </StackPanel>

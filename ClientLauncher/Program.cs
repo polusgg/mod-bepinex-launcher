@@ -19,14 +19,16 @@ namespace ClientLauncher
         {
             Context.GithubClient = new GitHubClient(new ProductHeaderValue("polusgg-client-launcher"));
             Context.ApiClient = new ApiClient();
+            SteamClient.Init(1653240);
             CreateConfiguration();
             
-            SteamClient.Init(1653240);
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
             
-            Context.ApiClient.Dispose();
+            
             SaveConfiguration();
+            SteamClient.Shutdown();
+            Context.ApiClient.Dispose();
         }
 
         private static void CreateConfiguration()
