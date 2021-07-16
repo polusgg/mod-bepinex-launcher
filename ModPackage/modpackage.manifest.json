@@ -1,10 +1,25 @@
 {
-  "version": 1,
+  "version": 3,
   "files": [
     {
-      "installPath": "BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
-      "sha256": "CAF96A53D3427771558845216864EA50F84D0D5D2A7378C0F763FF6418623820"
+      "installPath": "region.txt",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/region.txt",
+      "sha256": "297D597013BCF3D0CAC90A7BF1D88132D1A8EEB4C0B38D2CA574D6C330F1B077"
+    },
+    {
+      "installPath": "steam_appid.txt",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/steam_appid.txt",
+      "sha256": "52D19B26FB6F59CF5C387CDC31209DE1D6F440531107D207966584E8226847D4"
+    },
+    {
+      "installPath": "mono/Managed/Newtonsoft.Json.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
+      "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
+    },
+    {
+      "installPath": "BepInEx/plugins/Polus.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
+      "sha256": "74CE0C4607F9304B86B27D36BC394611414D5353307BC9BD637ED699A2FCC094"
     }
   ]
 }

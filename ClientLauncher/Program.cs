@@ -19,7 +19,16 @@ namespace ClientLauncher
         {
             Context.GithubClient = new GitHubClient(new ProductHeaderValue("polusgg-client-launcher"));
             Context.ApiClient = new ApiClient();
-            SteamClient.Init(1653240);
+
+            try
+            {
+                SteamClient.Init(1653240);
+            }
+            catch (Exception e)
+            {
+                Console.Write($"Error initializing Steam API: {e.Message}.\n Stack {e.StackTrace}");
+            }
+
             CreateConfiguration();
             
 
