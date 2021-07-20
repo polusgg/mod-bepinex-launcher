@@ -26,7 +26,7 @@ namespace ClientLauncher
             }
             catch (Exception e)
             {
-                Console.Write($"Error initializing Steam API: {e.Message}.\n Stack {e.StackTrace}");
+                Console.Write($"Error initializing Steam API: {e.Message}\n{e.StackTrace}");
             }
 
             CreateConfiguration();

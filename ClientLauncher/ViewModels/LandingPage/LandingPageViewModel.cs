@@ -96,8 +96,8 @@ namespace ClientLauncher.ViewModels.LandingPage
                 catch (Exception e)
                 {
                     IsInstallProgressing = false;
-                    Console.WriteLine($"Execption installing Polus.gg mod: {e.Message}. Stack {e.StackTrace}");
-                    await WarnDialog.Handle($"Couldn't install Polusgg mod to \"{install.Location}\"");
+                    Console.WriteLine($"Execption installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
+                    await WarnDialog.Handle($"Couldn't install Polusgg mod to ({install.Location})");
                     return;
                 }
         
@@ -106,7 +106,7 @@ namespace ClientLauncher.ViewModels.LandingPage
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Exception while launching game: {e.Message}. Stack {e.StackTrace}");
+                Console.WriteLine($"Exception while launching game: {e.Message}\n{e.StackTrace}");
                 await WarnDialog.Handle($"Caught exception when launching game.");
             }
             finally
