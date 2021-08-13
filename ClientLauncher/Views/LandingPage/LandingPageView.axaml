@@ -6,7 +6,8 @@
              xmlns:landingPage="clr-namespace:ClientLauncher.ViewModels.LandingPage"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ClientLauncher.Views.LandingPage.LandingPageView">
+             x:Class="ClientLauncher.Views.LandingPage.LandingPageView"
+             Width="800" Height="600">
 
     <Design.DataContext>
         <landingPage:LandingPageViewModel />
