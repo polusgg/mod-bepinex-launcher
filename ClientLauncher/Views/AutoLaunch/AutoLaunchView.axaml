@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ClientLauncher.Views.AutoLaunch.AutoLaunchView"
+             Width="300" Height="450"
+             MaxWidth="300" MaxHeight="450"
+             MinWidth="300" MinHeight="450">
+    <UserControl.Background>
+        <ImageBrush Source="/Assets/autolaunch_background.png" />
+    </UserControl.Background>
+
+    <Panel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 75 0 0">
+        <styles:Card Background="#130923" Width="200" Height="55">
+            <StackPanel Width="200" Height="55">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Margin="0 7 0 3"
+                        FontSize="16"
+                        FontWeight="Light">
+                        Launching
+                    </TextBlock>
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Margin="0 3 0 7"
+                        FontSize="12"
+                        FontWeight="Light"
+                        FontStyle="Italic">
+                        Getting everything ready...
+                    </TextBlock>
+                </StackPanel>
+
+                <ProgressBar
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 0 0"
+                    IsIndeterminate="True"
+                    Width="200"
+                    Height="2"
+                    IsVisible="True" />
+            </StackPanel>
+        </styles:Card>
+    </Panel>
+</UserControl>

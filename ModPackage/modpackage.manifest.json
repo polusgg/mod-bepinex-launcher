@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 6,
   "files": [
     {
       "installPath": "region.txt",
@@ -12,19 +12,59 @@
       "sha256": "52D19B26FB6F59CF5C387CDC31209DE1D6F440531107D207966584E8226847D4"
     },
     {
+      "installPath": "api.txt",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/api.txt",
+      "sha256": "914E877405FFEAD260BC36C443CD37E0D0E2E48400BEF834E993AEE1ED3CAA67"
+    },
+    {
       "installPath": "mono/Managed/Newtonsoft.Json.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
       "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
     },
     {
+      "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "sha256": "2BE3E3DB8224A0DE0B51CC9E94CC6E96316DA3DA5FD3D00D297DF63AAB044861"
+    },
+    {
       "installPath": "BepInEx/plugins/PolusggSlim.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
-      "sha256": "72BE1715FDB0D596B84D2E51A20DAA46CB278CAE1CE3DB1EF4800AAB6A57490E"
+      "sha256": "7D8DF4ED9239549F60793251A24651E1132AFFF0F006E1DE2EE8F7F8113BC3C9"
     },
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "9498C8BE47333E7012A39DB5F5BA5EDD4B02AEAF5C7957F94360081B083FE0F8"
+      "sha256": "EC05EEC780EA41DF6034C479270961A9F09E2145BD4FD17CD8B15A3005CF59E3"
+    },
+    {
+      "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
+      "sha256": "F7C9FA2C08FE65893555DDB0A6B85963FC00936E94969282FBF77F7D288FE021"
+    },
+    {
+      "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
+      "sha256": "827D67ED0F4F7979BBEE0241404C6496BD55E0F67EF7D9DCB08D752777475C26"
+    },
+    {
+      "installPath": "BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
+      "sha256": "734035DBCD78A1D782A820A336B118B8E1236656AC8E1D112622F8936651CB55"
+    },
+    {
+      "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
+      "sha256": "15804805ED8DA17F0B5D2FF7F88B092EFEADA63C8A868B8C56D8B5ECC52D4D4C"
+    },
+    {
+      "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_c36ae067ac926aafa201cbed8698724f.bundle",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_c36ae067ac926aafa201cbed8698724f.bundle",
+      "sha256": "9B5B2F9D17BFD2D2E32F6374678E979EBBDFB284F1473350978E54BAEE69B5DC"
+    },
+    {
+      "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_unitybuiltinshaders_3fcad82fee4d50fe119f4ba5a9907528.bundle",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_unitybuiltinshaders_3fcad82fee4d50fe119f4ba5a9907528.bundle",
+      "sha256": "306DFE8DD597E609937DFFB7BA9714973DDAA94DDDB4FB049BF9B70C8CF14739"
     }
   ]
 }

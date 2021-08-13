@@ -9,19 +9,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <AvaloniaResource Include="Assets\**"/>
+        <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="0.10.0"/>
-        <PackageReference Include="Avalonia.Desktop" Version="0.10.0"/>
-        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0"/>
-        <PackageReference Include="Gameloop.Vdf" Version="0.6.1"/>
-        <PackageReference Include="Material.Avalonia" Version="2.0.0"/>
-        <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.3.21201.4"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
-        <PackageReference Include="Octokit" Version="0.50.0"/>
-        <PackageReference Include="ReactiveUI.Fody" Version="13.2.10"/>
+        <PackageReference Include="Avalonia" Version="0.10.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
+        <PackageReference Include="Gameloop.Vdf" Version="0.6.1" />
+        <PackageReference Include="Material.Avalonia" Version="2.0.0" />
+        <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.3.21201.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Octokit" Version="0.50.0" />
+        <PackageReference Include="ReactiveUI.Fody" Version="13.2.10" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -32,14 +32,14 @@
         <Reference Include="Facepunch.Steamworks.Win64">
             <HintPath>..\Facepunch.Steamworks\Facepunch.Steamworks.Win64.dll</HintPath>
         </Reference>
-        <Content Include="..\Facepunch.Steamworks\redistributable_bin\win64\steam_api64.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+        <Content Include="..\Facepunch.Steamworks\redistributable_bin\win64\steam_api64.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
 
     <ItemGroup Condition="$(IsWindows) != 'True'">
         <Reference Include="Facepunch.Steamworks.Posix">
             <HintPath>..\Facepunch.Steamworks\Facepunch.Steamworks.Posix.dll</HintPath>
         </Reference>
-        <Content Include="..\Facepunch.Steamworks\redistributable_bin\linux64\libsteam_api.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"/>
+        <Content Include="..\Facepunch.Steamworks\redistributable_bin\linux64\libsteam_api.so" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
     
     <ItemGroup>

@@ -6,8 +6,8 @@
         xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ClientLauncher.Views.MainWindow"
-        Width="630" Height="500"
-        MinWidth="630" MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        MaxWidth="800" MaxHeight="600"
         Icon="/Assets/polusgglogo.png"
         Title="Polus.gg"
 >

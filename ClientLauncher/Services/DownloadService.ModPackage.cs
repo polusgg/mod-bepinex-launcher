@@ -18,21 +18,21 @@ namespace ClientLauncher.Services
             {
                 if (newManifest.Version > manifest.Version)
                 {
-                    await FreshInstall(install, newManifest);
+                    await FreshInstallAsync(install, newManifest);
                 }
                 else
                 {
                     if (manifest.Files.Select(x => Path.Combine(install.Location, x.InstallPath)).Any(x => !File.Exists(x) && !Directory.Exists(x)))
-                       await FreshInstall(install, newManifest);
+                       await FreshInstallAsync(install, newManifest);
                 }
             }
             else
             {
-                await InstallModPackage(install, newManifest);
+                await InstallModPackageAsync(install, newManifest);
             }
         }
 
-        private static async ValueTask FreshInstall(GameInstall install, ModPackageManifest manifest)
+        private static async ValueTask FreshInstallAsync(GameInstall install, ModPackageManifest manifest)
         {
             foreach (var file in manifest.Files.Select(x => Path.Combine(install.Location, x.InstallPath)))
             {
@@ -40,10 +40,10 @@ namespace ClientLauncher.Services
                     File.Delete(file);
             }
 
-            await InstallModPackage(install, manifest);
+            await InstallModPackageAsync(install, manifest);
         }
 
-        private static async ValueTask InstallModPackage(GameInstall install, ModPackageManifest manifest)
+        private static async ValueTask InstallModPackageAsync(GameInstall install, ModPackageManifest manifest)
         {
             foreach (var file in manifest.Files)
             {

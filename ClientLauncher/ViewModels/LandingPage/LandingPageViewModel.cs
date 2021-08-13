@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -19,13 +21,26 @@ namespace ClientLauncher.ViewModels.LandingPage
             get => Context.Configuration.VanillaAmongUsLocation;
             set => this.RaiseAndSetIfChanged(ref Context.Configuration.VanillaAmongUsLocation, value);
         }
+
+        public string[] AutodetectPaths
+        {
+            get => Context.Configuration.AutodetectedPaths;
+            set => this.RaiseAndSetIfChanged(ref Context.Configuration.AutodetectedPaths, value);
+        }
+        
+        public bool AutoLaunch
+        {
+            get => Context.Configuration.AutoLaunch;
+            set => this.RaiseAndSetIfChanged(ref Context.Configuration.AutoLaunch, value);
+        }
         
         [Reactive]
         public bool IsInstallProgressing { get; set; }
         
         public ICommand ChooseFileCommand { get; }
-        public ICommand SteamAutodetect { get; }
+        public ICommand ExecuteAutodetect { get; }
         public ICommand InstallGame { get; }
+        
         public Interaction<Unit, string?> FileChooserDialog { get; }
         public Interaction<string, Unit> WarnDialog { get; }
 
@@ -49,59 +64,79 @@ namespace ClientLauncher.ViewModels.LandingPage
                     await WarnDialog.Handle($"\"{amongUsLocation}\"  is not a valid install location");
             });
 
-            SteamAutodetect = ReactiveCommand.Create(() =>
+            ExecuteAutodetect = ReactiveCommand.Create(() =>
             {
-                if (SteamLocatorService.TryGetGameLocation(out var gameLocation))
-                {
-                    if (gameLocation != string.Empty)
-                        VanillaAmongUsLocation = gameLocation;
-                }
-            });
+                AutodetectPaths = GameAutoDetectService.LocateGameInstallsAsync().Select(x => x.Location).ToArray();
+                
+                var location = AutodetectPaths.FirstOrDefault(x =>
+                    GameIntegrityService.AmongUsGameExists(new GameInstall {Location = x}));
+                if (location is not null)
+                    VanillaAmongUsLocation = location;
+            }); 
 
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
         }
 
         private async Task InstallGameAsync()
         {
-            var install = new GameInstall
+            var vanillaInstall = new GameInstall
             {
                 Location = VanillaAmongUsLocation
             };
-        
+
+            var moddedInstall = new GameInstall
+            {
+                Location = Context.ModdedAmongUsLocation
+            };
+            
             IsInstallProgressing = true;
             try
             {
-                if (!GameIntegrityService.AmongUsGameExists(install))
+                if (!GameIntegrityService.AmongUsGameExists(vanillaInstall))
                 {
                     IsInstallProgressing = false;
-                    await WarnDialog.Handle($"\"{install.Location}\"  is not a valid install location");
+                    await WarnDialog.Handle($"\"{vanillaInstall.Location}\" is not a valid install location");
                     return;
+                }
+                
+                if (!GameIntegrityService.AmongUsGameExists(moddedInstall) || GameVersionService.ParseVersion(vanillaInstall) != GameVersionService.ParseVersion(moddedInstall))
+                {
+                    try
+                    {
+                        await vanillaInstall.CopyTo(moddedInstall);
+                    }
+                    catch (Exception)
+                    {
+                        IsInstallProgressing = false;
+                        await WarnDialog.Handle($"Couldn't setup modded install directory.");
+                        return;
+                    }
                 }
         
                 try
                 {
-                    await DownloadService.DownloadBepInExAsync(install);
+                    await DownloadService.DownloadBepInExAsync(moddedInstall);
                 }
                 catch (Exception)
                 {
                     IsInstallProgressing = false;
-                    await WarnDialog.Handle($"Couldn't install BepInEx to ({install.Location})");
+                    await WarnDialog.Handle($"Couldn't install BepInEx.");
                     return;
                 }
         
                 try
                 {
-                    await DownloadService.DownloadModPackageAsync(install);
+                    await DownloadService.DownloadModPackageAsync(moddedInstall);
                 }
                 catch (Exception e)
                 {
                     IsInstallProgressing = false;
                     Console.WriteLine($"Execption installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
-                    await WarnDialog.Handle($"Couldn't install Polusgg mod to ({install.Location})");
+                    await WarnDialog.Handle($"Couldn't install Polusgg mod.");
                     return;
                 }
         
-                await install.LaunchGame();
+                await moddedInstall.LaunchGame();
         
             }
             catch (Exception e)
