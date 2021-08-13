@@ -71,7 +71,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                 var location = AutodetectPaths.FirstOrDefault(x =>
                     GameIntegrityService.AmongUsGameExists(new GameInstall {Location = x}));
                 if (location is not null)
-                    VanillaAmongUsLocation = location;
+                    VanillaAmongUsLocation = Path.GetFullPath(location);
             }); 
 
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
