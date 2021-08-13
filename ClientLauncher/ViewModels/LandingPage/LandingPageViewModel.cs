@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -92,6 +93,14 @@ namespace ClientLauncher.ViewModels.LandingPage
             IsInstallProgressing = true;
             try
             {
+#if STEAMRELEASE
+                if (Process.GetProcessesByName("Among Us").Length > 0)
+                {
+                    IsInstallProgressing = false;
+                    await WarnDialog.Handle("Among Us is already running!");
+                    return;
+                }
+#endif
                 if (!GameIntegrityService.AmongUsGameExists(vanillaInstall))
                 {
                     IsInstallProgressing = false;
