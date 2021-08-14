@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "files": [
     {
       "installPath": "region.txt",
@@ -19,7 +19,7 @@
     {
       "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "sha256": "DF4BD712BAF0C05698938DF58979F23A84E20D112BD262E3ACB83B294ED76770"
+      "sha256": "DB2634A6E1EF852E0B723D321C7A23A8317E723E399328D3BCD19D9A83913BC1"
     },
     {
       "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
@@ -49,7 +49,7 @@
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
-      "sha256": "6700A2C39D46F232828A2693231FC97C00FEFA3EFCEEDCD7D8BD07D1E3D31CB9"
+      "sha256": "35E93CD6AD890E32F4C9976EBB360D44E3DC700749F9BD800A447BA5FAF0404B"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
@@ -59,12 +59,12 @@
     {
       "installPath": "BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
-      "sha256": "8729E104BFD55CA5772D89742F6A1CDFA2350016030469B4816F88CB4194090E"
+      "sha256": "472B23077F7EB5DC8A576ED7DEEE02BD9CF8C0BC0931F25A7932D4B3D361D317"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "sha256": "79790DE535B30B9961AB336C2595429555AE31D532884216444B945EE93146C0"
+      "sha256": "50D6BE8C24CEFCC49B9C4962D8A8C29A30AA8B3165FA2C7C15D03D68FBD51461"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_c36ae067ac926aafa201cbed8698724f.bundle",
