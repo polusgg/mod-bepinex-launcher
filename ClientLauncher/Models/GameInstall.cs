@@ -14,6 +14,7 @@ namespace ClientLauncher.Models
          */
         
         public string AmongUsExe => Path.Combine(Location, "Among Us.exe");
+        public string GameAssemblyDll => Path.Combine(Location, "GameAssembly.dll");
         
         // Unity's globalgamemanagers file containing Among Us version
         public string GlobalGameManagersFile => Path.Combine(Location, "Among Us_Data", "globalgamemanagers");

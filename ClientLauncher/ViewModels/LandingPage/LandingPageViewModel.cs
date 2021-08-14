@@ -108,7 +108,8 @@ namespace ClientLauncher.ViewModels.LandingPage
                     return;
                 }
                 
-                if (!GameIntegrityService.AmongUsGameExists(moddedInstall) || GameVersionService.ParseVersion(vanillaInstall) != GameVersionService.ParseVersion(moddedInstall))
+                if (!GameIntegrityService.AmongUsGameExists(moddedInstall) ||
+                    FileExtensions.Sha256Hash(moddedInstall.GameAssemblyDll) != FileExtensions.Sha256Hash(vanillaInstall.GameAssemblyDll))
                 {
                     try
                     {
