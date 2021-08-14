@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "files": [
     {
       "installPath": "region.txt",
@@ -44,7 +44,7 @@
     {
       "installPath": "BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
-      "sha256": "ECE25FC8D686B04DA58698FC63216D8388A57CFB24163E259A517E777470EF2C"
+      "sha256": "F631D7F14358E0D81E726EE19A4EAA3D8082AE5677C43E159A856D22525B1D9C"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
