@@ -1,5 +1,5 @@
 {
-  "version": 13,
+  "version": 15,
   "files": [
     {
       "installPath": "region.txt",
@@ -22,6 +22,21 @@
       "sha256": "DF4BD712BAF0C05698938DF58979F23A84E20D112BD262E3ACB83B294ED76770"
     },
     {
+      "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/UnhollowerBaseLib.dll",
+      "sha256": "2714363243ED775F31E90B7773E674F6386E103C5759225FBD02D07E52E5CF17"
+    },
+    {
+      "installPath": "BepInEx/core/UnhollowerRuntimeLib.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/UnhollowerRuntimeLib.dll",
+      "sha256": "FB55D051B48F1C9713D673F61B1A202FFCA0B272F7EC66FA4B0FA1284E23E83A"
+    },
+    {
+      "installPath": "BepInEx/core/AssemblyUnhollower.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/AssemblyUnhollower.dll",
+      "sha256": "88FA06C3B3763D70A17EBC179F6778A2F9ABA025DF3E221C8267A165603B77FA"
+    },
+    {
       "installPath": "BepInEx/plugins/PolusggSlim.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
       "sha256": "DFA867B66CD4A44CEFE9CCA51E8BEDE801138F4D6F40657AC52EF8429BFA9C80"
@@ -29,7 +44,7 @@
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "4890E371D1FD95D4C6E9A2652FC856AE5205ACB1361BC2ABC6ED9B8E916303E2"
+      "sha256": "398F3944114A63D3F440D20EC6EB218E39FA6FC3ADC15D83E47B3F551A4F140B"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
