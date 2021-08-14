@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "files": [
     {
       "installPath": "region.txt",
@@ -10,11 +10,6 @@
       "installPath": "steam_appid.txt",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/steam_appid.txt",
       "sha256": "52D19B26FB6F59CF5C387CDC31209DE1D6F440531107D207966584E8226847D4"
-    },
-    {
-      "installPath": "api.txt",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/api.txt",
-      "sha256": "914E877405FFEAD260BC36C443CD37E0D0E2E48400BEF834E993AEE1ED3CAA67"
     },
     {
       "installPath": "mono/Managed/Newtonsoft.Json.dll",
