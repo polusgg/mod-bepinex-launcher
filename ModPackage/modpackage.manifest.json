@@ -1,5 +1,5 @@
 {
-  "version": 18,
+  "version": 19,
   "files": [
     {
       "installPath": "region.txt",
@@ -44,7 +44,7 @@
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "7CB73B04E020020C69F4B92195E23342645E21293EA23718631B595839B9B0CA"
+      "sha256": "8BE798C11F3ACEDB8CD2ECF87F124629017E08F8B1DAA3832D50A7E1056DCE73"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
