@@ -13,6 +13,8 @@ namespace ClientLauncher.Services
         {
             Path.Combine("BepInEx", "cache"),
             Path.Combine("BepInEx", "unhollowed"),
+            Path.Combine("BepInEx", "patchers"),
+            Path.Combine("BepInEx", "plugins")
         };
         
         public static async ValueTask DownloadBepInExAsync(GameInstall install)
