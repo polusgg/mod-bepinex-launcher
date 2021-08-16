@@ -1,5 +1,5 @@
 {
-  "version": 19,
+  "version": 20,
   "files": [
     {
       "installPath": "region.txt",
@@ -19,7 +19,7 @@
     {
       "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "sha256": "DB2634A6E1EF852E0B723D321C7A23A8317E723E399328D3BCD19D9A83913BC1"
+      "sha256": "7EC7EE2A024F8235F6CA988869CF433DC7D958145052E48E75FD3A98FDC6E4A9"
     },
     {
       "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
@@ -44,12 +44,12 @@
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "8BE798C11F3ACEDB8CD2ECF87F124629017E08F8B1DAA3832D50A7E1056DCE73"
+      "sha256": "EA5D974BC160884C0D900D0640CDDCE6F4628A7BC9D516602B8BAEE73B46328F"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
-      "sha256": "35E93CD6AD890E32F4C9976EBB360D44E3DC700749F9BD800A447BA5FAF0404B"
+      "sha256": "39122BA40B5E13510A1C0347D76DAFBA5BADC5A34B02870A8C8E5784274CE740"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
@@ -57,14 +57,14 @@
       "sha256": "827D67ED0F4F7979BBEE0241404C6496BD55E0F67EF7D9DCB08D752777475C26"
     },
     {
-      "installPath": "BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.SubmarineMap.subplugin",
-      "sha256": "472B23077F7EB5DC8A576ED7DEEE02BD9CF8C0BC0931F25A7932D4B3D361D317"
+      "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
+      "sha256": "9552D9B9B46F65955EFEDE0F84C955B7C8DA753982ACC8707C6BF6DF1FF626EC"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "sha256": "50D6BE8C24CEFCC49B9C4962D8A8C29A30AA8B3165FA2C7C15D03D68FBD51461"
+      "sha256": "04D037AD9001000A9FC32A8280E12024505BDC8B6CACB511C817C31CB5B4E603"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_c36ae067ac926aafa201cbed8698724f.bundle",
