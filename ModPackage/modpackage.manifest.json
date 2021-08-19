@@ -1,5 +1,5 @@
 {
-  "version": 22,
+  "version": 23,
   "files": [
     {
       "installPath": "region.txt",
@@ -19,7 +19,7 @@
     {
       "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "sha256": "D7A6D27E114D7A239400BC835DFD93101CCF71F76A3D62A2F4F852E87BFBD6BD"
+      "sha256": "BC1FE8A68791237DD3396ED758DAAB860FF196778B4F3495466A5987263C9AD9"
     },
     {
       "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
@@ -44,12 +44,12 @@
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "2286410E7FB0863C609BA6C8A8248047A09B83A609AA4C10BCE896179B338491"
+      "sha256": "88145B9D0DC3D205F774B2DFF79D85F21D7405CB18E8BFEBB4F61CA8ED2F60A4"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
-      "sha256": "2C15BC8C82496C51461466E32BB2D2D0F4912580C9FE6A1EE0055D2CD6F5EFBF"
+      "sha256": "172C11C4437756EB1C68F638116A34DDBF827223F4C6AAFA4E5499F29FC109A3"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
@@ -59,12 +59,12 @@
     {
       "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
-      "sha256": "84D60A8D4841EF5827741C9B76F70D6E04ADB78F2FABC9E37CF2DF7199D17240"
+      "sha256": "52C8B64F814DCFED7ECE39AA82C4993D3BBB971F1703885AC246FDEE2D6A3220"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "sha256": "BB34B8C5130CD2761E6C15C1DC5DBB49044AC3A26A017A084F88DD945CCAEC70"
+      "sha256": "C339CF0BFE92A5D2CD7FB4E3EA4EACB4BD44F1448E9B66A1AF2E806C6A59B4D6"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_c36ae067ac926aafa201cbed8698724f.bundle",
