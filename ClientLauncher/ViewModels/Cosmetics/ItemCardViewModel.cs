@@ -60,7 +60,7 @@ namespace ClientLauncher.ViewModels.Cosmetics
             //TODO: thumbnail generation
             if (Type == "PET")
             {
-                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/pet.png"));
+                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/{Name}/pet.png"));
             }
             else if (Type == "HAT")
             {
