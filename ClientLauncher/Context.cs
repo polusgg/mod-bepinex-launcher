@@ -17,8 +17,8 @@ namespace ClientLauncher
         public static string BepInExGithubRepo => "BepInEx";
         public static string BucketUrl => "https://launcher.asset.polus.gg";
         
-        public static string CosmeticsUrl => "http://cosmetics.service.polus.gg:2219";
-        // public static string CosmeticsUrl => "http://localhost:2219";
+        //TODO: hardcode value later
+        public static string CosmeticsUrl => Configuration.CosmeticsServer;
         
         public static string DataPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
