@@ -31,6 +31,7 @@ namespace ClientLauncher
         public static string CachePath => Path.Combine(DataPath, "cache");
 
 
+        // TODO: Swap back over to IsLaunchedToCosmetics
         // public static bool IsLaunchedToCosmetics => SteamApps.CommandLine == "--window=cosmetics";
         public static bool IsLaunchedToCosmetics => true;
 
