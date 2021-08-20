@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ClientLauncher.Views.Cosmetics.BundleDetailsView">
+
+    <styles:Card Margin="20">
+        <DockPanel>
+            <Image Source="{Binding KeyArtBitmap}" Width="128" Height="128" DockPanel.Dock="Left"
+                   VerticalAlignment="Top" />
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button
+                    DockPanel.Dock="Right"
+                    Margin="4 0"
+                    Background="{StaticResource GreenAccent700}"
+                    BorderBrush="{StaticResource GreenAccent700}"
+                    Click="BuyButton_OnClick">Buy</Button>
+                <Button
+                    DockPanel.Dock="Right"
+                    Margin="4 0"
+                    Background="{StaticResource GreyPrimary600}"
+                    BorderBrush="{StaticResource GreyPrimary600}"
+                    Click="CancelButton_OnClick">Cancel</Button>
+                <TextBlock Classes="Body2" FontWeight="Bold"
+                           VerticalAlignment="Center">All proceeds go to modders at Polus.gg, not Innersloth</TextBlock>
+            </DockPanel>
+            <StackPanel Margin="12 0">
+                <TextBlock Classes="Headline4" Margin="0 8" Text="{Binding Bundle.Name}" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Margin="0 0 2 0">By: </TextBlock>
+                    <TextBlock FontSize="12" FontWeight="Light" Text="{Binding Bundle.Author}" />
+                </StackPanel>
+                <Separator />
+                <TextBlock Classes="Body2"
+                           TextWrapping="Wrap"
+                           Text="{Binding Bundle.Description}" />
+
+                <TextBlock Classes="Subtitle1" Margin="0 18 0 0">Items Included</TextBlock>
+                <ScrollViewer VerticalAlignment="Stretch"
+                              HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
+                              MaxHeight="182">
+                    <ItemsControl Items="{Binding Items}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+        </DockPanel>
+    </styles:Card>
+</UserControl>

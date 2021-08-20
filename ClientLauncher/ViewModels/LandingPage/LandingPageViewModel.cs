@@ -10,6 +10,7 @@ using ClientLauncher.Extensions;
 using ClientLauncher.Models;
 using ClientLauncher.Services;
 using ClientLauncher.Services.GameLocator;
+using Newtonsoft.Json;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
@@ -37,6 +38,8 @@ namespace ClientLauncher.ViewModels.LandingPage
         
         [Reactive]
         public bool IsInstallProgressing { get; set; }
+        
+        [Reactive] public string ManifestVersion { get; set; }
         
         public ICommand ChooseFileCommand { get; }
         public ICommand ExecuteAutodetect { get; }
@@ -76,6 +79,38 @@ namespace ClientLauncher.ViewModels.LandingPage
             }); 
 
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
+
+            this.WhenAnyValue(x => x.VanillaAmongUsLocation).Subscribe(_ => UpdateManifestVersion());
+        }
+
+        private void UpdateManifestVersion()
+        {
+            var versionString = new string[3];
+
+            var gameInstall = new GameInstall
+            {
+                Location = VanillaAmongUsLocation
+            };
+            if (GameIntegrityService.AmongUsGameExists(gameInstall))
+            {
+                versionString[0] = $"Game Version: {GameVersionService.ParseVersion(gameInstall)}";
+            }
+            
+            var moddedInstall = new GameInstall
+            {
+                Location = Context.ModdedAmongUsLocation
+            };
+            if (GameIntegrityService.AmongUsGameExists(moddedInstall) &&
+                File.Exists(moddedInstall.ModPackageManifestJson))
+            {
+                versionString[1] = $"Modded Version: {GameVersionService.ParseVersion(moddedInstall)}";
+                
+                var manifest = JsonConvert.DeserializeObject<ModPackageManifest>(File.ReadAllText(moddedInstall.ModPackageManifestJson));
+                if (manifest is not null)
+                    versionString[2] = $"Package Version: {manifest.Version}";
+            }
+
+            ManifestVersion = string.Join(", ", versionString);
         }
 
         private async Task InstallGameAsync()
@@ -145,7 +180,8 @@ namespace ClientLauncher.ViewModels.LandingPage
                     await WarnDialog.Handle($"Couldn't install Polusgg mod.");
                     return;
                 }
-        
+
+                UpdateManifestVersion();
                 await moddedInstall.LaunchGame();
         
             }

@@ -3,6 +3,7 @@ using System.IO;
 using Avalonia;
 using Avalonia.ReactiveUI;
 using ClientLauncher.Models;
+using ClientLauncher.Services;
 using Newtonsoft.Json;
 using Octokit;
 using Steamworks;
@@ -23,6 +24,8 @@ namespace ClientLauncher
             try
             {
                 SteamClient.Init(1653240);
+                SteamUser.OnMicroTxnAuthorizationResponse += SteamMicroTransactionService.OnMicroTransaction;
+                Console.WriteLine($"SteamID: {SteamClient.SteamId.AccountId}");
             }
             catch (Exception e)
             {

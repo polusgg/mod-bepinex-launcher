@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
+             xmlns:vm="clr-namespace:ClientLauncher.ViewModels.Cosmetics"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ClientLauncher.Views.Cosmetics.BundleCardView">
+
+    <Design.DataContext>
+        <vm:BundleCardViewModel />
+    </Design.DataContext>
+
+    <Panel Margin=" 16 16">
+        <styles:Card Width="360" Padding="4" VerticalAlignment="Top">
+            <DockPanel>
+                <Image Source="{Binding KeyArtBitmap}"
+                       Width="96" Height="96"
+                       Margin="0 0 16 0"
+                       DockPanel.Dock="Left" />
+                <Panel Margin="0 12 0 0" DockPanel.Dock="Bottom">
+                    <Button Classes="Dark"
+                            Click="Button_OnClick"
+                            HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0 0 4 0">Buy -</TextBlock>
+                            <TextBlock Text="{Binding PriceFormatted}"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Panel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Classes="Headline6" Text="{Binding Name}" />
+                    <TextBlock Classes="Body2" TextWrapping="Wrap" Text="{Binding Description}" />
+                </StackPanel>
+            </DockPanel>
+        </styles:Card>
+    </Panel>
+</UserControl>

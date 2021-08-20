@@ -14,5 +14,7 @@
         <StyleInclude Source="avares://Material.Avalonia/Material.Avalonia.Templates.xaml" />
         <StyleInclude Source="avares://Material.Colors/Themes/MaterialDesignColor.Grey.Named.xaml"></StyleInclude>
         <StyleInclude Source="avares://Material.Colors/Themes/MaterialDesignColor.DeepPurple.Named.xaml"></StyleInclude>
+        <StyleInclude Source="avares://Material.Colors/Themes/MaterialDesignColor.Green.Named.xaml"></StyleInclude>
+        <StyleInclude Source="avares://Material.Colors/Themes/MaterialDesignColor.Red.Named.xaml"></StyleInclude>
     </Application.Styles>
 </Application>

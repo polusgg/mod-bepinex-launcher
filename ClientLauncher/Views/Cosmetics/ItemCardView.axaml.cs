@@ -7,12 +7,11 @@ using ReactiveUI;
 
 namespace ClientLauncher.Views.Cosmetics
 {
-    public class CosmeticsView : ReactiveUserControl<CosmeticsViewModel>
+    public class ItemCardView : ReactiveUserControl<ItemCardViewModel>
     {
-        public CosmeticsView()
+        public ItemCardView()
         {
             InitializeComponent();
-
             this.WhenActivated(_ => ViewModel.OnActivated.Execute(null));
         }
 

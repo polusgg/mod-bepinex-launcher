@@ -8,7 +8,7 @@ using ClientLauncher.Models;
 
 namespace ClientLauncher.Services.Api
 {
-    public class ApiClient : IDisposable
+    public partial class ApiClient : IDisposable
     {
         private HttpClient _client;
         public ApiClient()

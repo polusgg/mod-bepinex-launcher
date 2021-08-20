@@ -2,7 +2,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ClientLauncher.ViewModels.Cosmetics"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="ClientLauncher.Views.Cosmetics.CosmeticsView">
-    Welcome to Avalonia!
+             x:Class="ClientLauncher.Views.Cosmetics.CosmeticsView"
+             MinWidth="800" MinHeight="600">
+    <Design.DataContext>
+        <vm:CosmeticsViewModel />
+    </Design.DataContext>
+
+    <DockPanel>
+        <DockPanel.Background>
+            <ImageBrush Source="/Assets/cliffs.png" AlignmentY="Bottom" />
+        </DockPanel.Background>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="0 32 0 0"
+                    DockPanel.Dock="Top">
+            <Image Source="/Assets/Polus_Logo_Outline_With_Text.png"
+                   VerticalAlignment="Center"
+                   Width="256" Height="128"
+                   Margin="32 0" />
+        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      Margin="6 0"
+                      IsVisible="{Binding !BundleSelected}">
+            <ItemsControl Items="{Binding BundleCards}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+        <UserControl Content="{Binding CurrentSeletedBundle}" 
+                     IsVisible="{Binding BundleSelected}" />
+    </DockPanel>
 </UserControl>
