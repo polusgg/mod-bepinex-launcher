@@ -17,7 +17,7 @@ namespace ClientLauncher.Services.Api
         private SavedAuthModel GetAuthModel()
         {
             var model = JsonConvert.DeserializeObject<SavedAuthModel>(
-                Path.Combine(Context.ModdedAmongUsLocation, "api.txt")
+                Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(Path.Combine(Context.ModdedAmongUsLocation, "api.txt"))))
             );
 
             if (model is null)
