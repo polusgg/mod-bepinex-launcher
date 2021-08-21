@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 using ClientLauncher.Models;
 using ClientLauncher.Models.Cosmetics;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Steamworks;
 
 namespace ClientLauncher.Services.Api
 {
     public partial class ApiClient
     {
+        private static readonly JsonSerializerSettings _jsonSettings = new()
+        {
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
+        
         private SavedAuthModel GetAuthModel()
         {
             var model = JsonConvert.DeserializeObject<SavedAuthModel>(
@@ -50,7 +56,7 @@ namespace ClientLauncher.Services.Api
             return item.Data;
         }
         
-        public async Task<string> InitMicroTransaction(string bundleId)
+        public async Task<PurchaseInitResponse> InitMicroTransaction(string bundleId)
         {
             if (!SteamClient.IsValid)
                 throw new InvalidOperationException(
@@ -65,15 +71,15 @@ namespace ClientLauncher.Services.Api
                 Content =  new StringContent(JsonConvert.SerializeObject(new
                 {
                     UserId = SteamClient.SteamId.Value
-                }), Encoding.UTF8, "application/json")
+                }, _jsonSettings), Encoding.UTF8, "application/json")
             };
-            request.Headers.Add("Authorization",  $"{model.ClientToken}:{model.ClientIdString}");
+            request.Headers.TryAddWithoutValidation("Authorization", $"{model.ClientToken}:{model.ClientIdString}");
 
             var response = await (await _client.SendAsync(request)).Content.ReadFromJsonAsync<PurchaseInitResponse>();
             if (response is null)
                 throw new WebException("Trying to init a bundle purchase transaction returned null");
             
-            return response.PurchaseId;
+            return response;
         }
 
         public async Task FinalizeTransaction(string purchaseId)
@@ -85,7 +91,7 @@ namespace ClientLauncher.Services.Api
                 RequestUri = new Uri($"{Context.CosmeticsUrl}/v1/purchases/{purchaseId}/finalize"),
                 Method = HttpMethod.Post,
             };
-            request.Headers.Add("Authorization",  $"{model.ClientToken}:{model.ClientIdString}");
+            request.Headers.TryAddWithoutValidation("Authorization", $"{model.ClientToken}:{model.ClientIdString}");
 
             var response = await _client.SendAsync(request);
         }

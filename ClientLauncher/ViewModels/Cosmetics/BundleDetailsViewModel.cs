@@ -43,9 +43,16 @@ namespace ClientLauncher.ViewModels.Cosmetics
 
         private async Task OnBuyBundleAsync()
         {
+            var response = await Context.ApiClient.InitMicroTransaction(BundleId);
+            if (!response.Ok)
+            { 
+                Console.WriteLine("Error from SteamAPI initializing the microtransaction.");
+                return;
+            }
+
             SteamMicroTransactionService.AddMicroTransaction(new PendingMicroTransaction
             {
-                PurchaseId = await Context.ApiClient.InitMicroTransaction(BundleId) 
+                PurchaseId = response.PurchaseId
             });
             ParentViewModel.OnCloseBundleDetails();
         }
