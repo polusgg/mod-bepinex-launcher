@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using ClientLauncher.Models;
+using ClientLauncher.MonkePatches;
 using Octokit;
 using Steamworks;
 using ApiClient = ClientLauncher.Services.Api.ApiClient;
@@ -9,6 +10,9 @@ namespace ClientLauncher
 {
     public static class Context
     {
+        public static MonkePatchLoader MonkePatchLoader { get; set; }
+        
+
         public static GitHubClient GithubClient { get; set; }
         public static ApiClient ApiClient { get; set; }
 
@@ -18,7 +22,7 @@ namespace ClientLauncher
         public static string BucketUrl => "https://launcher.asset.polus.gg";
         
         //TODO: hardcode value later
-        public static string CosmeticsUrl => Configuration.CosmeticsServer;
+        public static string CosmeticsUrl => "http://cosmetics.service.polus.gg:2219";
         
         public static string DataPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

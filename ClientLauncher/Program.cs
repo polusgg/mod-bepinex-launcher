@@ -3,6 +3,7 @@ using System.IO;
 using Avalonia;
 using Avalonia.ReactiveUI;
 using ClientLauncher.Models;
+using ClientLauncher.MonkePatches;
 using ClientLauncher.Services;
 using Newtonsoft.Json;
 using Octokit;
@@ -18,6 +19,8 @@ namespace ClientLauncher
         // yet and stuff might break.
         public static void Main(string[] args)
         {
+            (Context.MonkePatchLoader = new MonkePatchLoader()).LoadMonkePatches();
+            
             Context.GithubClient = new GitHubClient(new ProductHeaderValue("polusgg-client-launcher"));
             Context.ApiClient = new ApiClient();
 
@@ -25,7 +28,6 @@ namespace ClientLauncher
             {
                 SteamClient.Init(1653240);
                 SteamUser.OnMicroTxnAuthorizationResponse += SteamMicroTransactionService.OnMicroTransaction;
-                Console.WriteLine($"SteamID: {SteamClient.SteamId.AccountId}");
             }
             catch (Exception e)
             {

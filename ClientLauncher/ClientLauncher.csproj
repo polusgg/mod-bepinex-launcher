@@ -22,6 +22,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Octokit" Version="0.50.0" />
         <PackageReference Include="ReactiveUI.Fody" Version="13.2.10" />
+        <PackageReference Include="HarmonyX" Version="2.5.4" />
     </ItemGroup>
 
     <PropertyGroup>

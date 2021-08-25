@@ -9,8 +9,5 @@ namespace ClientLauncher.Models
         public string[] AutodetectedPaths = Array.Empty<string>();
         
         public bool AutoLaunch = false;
-        
-        //TODO: remove from configuration
-        public string CosmeticsServer = "http://rose.hall.ly:2219";
     }
 }
