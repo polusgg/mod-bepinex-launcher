@@ -31,7 +31,7 @@ jobs:
       working-directory: "./ClientLauncher"
     
     - name: Publish for ${{ matrix.os }}
-      run: dotnet publish -c Release -r ${{ matrix.publishRID }} -p:PublishSingleFile=true -p:PublishTrimmed=true --self-contained=true -p:IncludeNativeLibrariesForSelfExtract=true
+      run: dotnet publish -c Release -r ${{ matrix.publishRID }} -p:PublishSingleFile=true --self-contained=true -p:IncludeNativeLibrariesForSelfExtract=true
       working-directory: "./ClientLauncher"
       
     - name: Upload Release Asset
