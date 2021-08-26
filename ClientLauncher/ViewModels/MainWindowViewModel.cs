@@ -29,9 +29,13 @@ namespace ClientLauncher.ViewModels
         
         public Interaction<bool, Unit> SetInteractivity { get; }
 
-        
+
+        // TODO: so damn sus
+        public static MainWindowViewModel Instance { get; private set; }
         public MainWindowViewModel()
         {
+            Instance = this;
+
             if (Context.IsLaunchedToCosmetics)
                 CurrentView = new CosmeticsViewModel();
             else if (Context.Configuration.AutoLaunch)
@@ -102,6 +106,11 @@ namespace ClientLauncher.ViewModels
         {
             await SetInteractivity.Handle(true);
             CurrentView = new LandingPageViewModel();
+        }
+
+        public void SwitchViewTo(ViewModelBase vm)
+        {
+            CurrentView = vm;
         }
     }
 }

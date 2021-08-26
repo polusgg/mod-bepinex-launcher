@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ClientLauncher.Models.Cosmetics;
 using Steamworks;
 
@@ -12,12 +13,25 @@ namespace ClientLauncher.Services
         {
             Console.WriteLine($"AppId={appId}, orderId={orderId}, authorized={authorized}");
             while (_pendingMicroTxns.TryDequeue(out var transaction))
-                Context.ApiClient.FinalizeTransaction(transaction.PurchaseId).ConfigureAwait(false);
+            {
+                try
+                {
+                    if (authorized)
+                        Context.ApiClient.FinalizeTransaction(transaction.PurchaseId).GetAwaiter().GetResult();
+                    
+                    transaction.TaskCompletionSource.SetResult(authorized);
+                }
+                catch (Exception e)
+                {
+                    transaction.TaskCompletionSource.SetException(e);
+                }
+            }
         }
 
-        public static void AddMicroTransaction(PendingMicroTransaction transaction)
+        public static Task<bool> ProcessMicroTransaction(PendingMicroTransaction transaction)
         {
             _pendingMicroTxns.Enqueue(transaction);
+            return transaction.TaskCompletionSource.Task;
         }
     }
 }

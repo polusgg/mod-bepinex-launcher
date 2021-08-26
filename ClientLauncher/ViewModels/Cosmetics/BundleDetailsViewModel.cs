@@ -37,7 +37,7 @@ namespace ClientLauncher.ViewModels.Cosmetics
             OnBuyBundle = ReactiveCommand.CreateFromTask(OnBuyBundleAsync);
             OnCancelBuyBundle = ReactiveCommand.Create(() =>
             {
-                ParentViewModel.OnCloseBundleDetails();
+                ParentViewModel.OnCloseBundleDetails(false);
             });
         }
 
@@ -50,11 +50,13 @@ namespace ClientLauncher.ViewModels.Cosmetics
                 return;
             }
 
-            SteamMicroTransactionService.AddMicroTransaction(new PendingMicroTransaction
-            {
-                PurchaseId = response.PurchaseId
-            });
-            ParentViewModel.OnCloseBundleDetails();
+            var success = await SteamMicroTransactionService
+                .ProcessMicroTransaction(new PendingMicroTransaction 
+                { 
+                    PurchaseId = response.PurchaseId 
+                });
+
+            ParentViewModel.OnCloseBundleDetails(success);
         }
         
         private async Task OnActivatedAsync()

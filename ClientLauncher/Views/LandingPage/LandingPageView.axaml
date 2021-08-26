@@ -5,6 +5,7 @@
              xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
              xmlns:landingPage="clr-namespace:ClientLauncher.ViewModels.LandingPage"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ClientLauncher.Views.LandingPage.LandingPageView"
              Width="800" Height="600">
@@ -32,17 +33,35 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Margin="0 0 0 32" DockPanel.Dock="Bottom">
-            <Button Classes="Dark" Background="#4c1d95"
-                    Width="128" Padding="12"
-                    Command="{Binding InstallGame}">
-                <TextBlock FontSize="18">Launch</TextBlock>
+        <Panel HorizontalAlignment="Stretch"
+               Margin="0 0 0 32" 
+               DockPanel.Dock="Bottom">
+            <Panel
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Height="50">
+                <Button Classes="Dark" Background="#4c1d95"
+                        Width="128" Padding="12"
+                        Command="{Binding InstallGame}">
+                    <TextBlock FontSize="18">Launch</TextBlock>
+                </Button>
+                <ProgressBar
+                    IsIndeterminate="True"
+                    Width="128"
+                    IsVisible="{Binding IsInstallProgressing}" />
+            </Panel>
+            <Button
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Height="64" Width="80"
+                Margin="0 0 12 0"
+                Classes="Flat"
+                Command="{Binding OnClickCosmeticsButton}"
+                assists:ButtonAssist.CornerRadius="16">
+                <StackPanel Orientation="Vertical">
+                    <avalonia:MaterialIcon Kind="Shopping" Foreground="White"/>
+                    <TextBlock Text="Store" Foreground="White"/>
+                </StackPanel>
             </Button>
-            <ProgressBar
-                IsIndeterminate="True"
-                Width="128"
-                IsVisible="{Binding IsInstallProgressing}" />
-        </StackPanel>
+        </Panel>
 
         <Panel>
             <styles:Card Background="#130923" Width="480" VerticalAlignment="Center">

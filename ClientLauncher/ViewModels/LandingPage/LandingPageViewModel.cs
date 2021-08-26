@@ -10,6 +10,7 @@ using ClientLauncher.Extensions;
 using ClientLauncher.Models;
 using ClientLauncher.Services;
 using ClientLauncher.Services.GameLocator;
+using ClientLauncher.ViewModels.Cosmetics;
 using Newtonsoft.Json;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -45,6 +46,8 @@ namespace ClientLauncher.ViewModels.LandingPage
         public ICommand ExecuteAutodetect { get; }
         public ICommand InstallGame { get; }
         
+        public ICommand OnClickCosmeticsButton { get; }
+
         public Interaction<Unit, string?> FileChooserDialog { get; }
         public Interaction<string, Unit> WarnDialog { get; }
 
@@ -79,6 +82,8 @@ namespace ClientLauncher.ViewModels.LandingPage
             }); 
 
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
+
+            OnClickCosmeticsButton = ReactiveCommand.CreateFromTask(async () => MainWindowViewModel.Instance.SwitchViewTo(new CosmeticsViewModel()));
 
             this.WhenAnyValue(x => x.VanillaAmongUsLocation).Subscribe(_ => UpdateManifestVersion());
         }

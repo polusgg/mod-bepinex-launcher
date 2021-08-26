@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:ClientLauncher.ViewModels.Cosmetics"
+             xmlns:icon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ClientLauncher.Views.Cosmetics.CosmeticsView"
              MinWidth="800" MinHeight="600">
@@ -14,15 +16,27 @@
         <DockPanel.Background>
             <ImageBrush Source="/Assets/cliffs.png" AlignmentY="Bottom" />
         </DockPanel.Background>
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                    Margin="0 32 0 0"
-                    DockPanel.Dock="Top">
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                   Margin="0 32 0 0"
+                   DockPanel.Dock="Top"
+                   LastChildFill="False">
             <Image Source="/Assets/Polus_Logo_Outline_With_Text.png"
                    VerticalAlignment="Center"
                    Width="256" Height="128"
                    Margin="32 0" />
-        </StackPanel>
+            <Button
+                DockPanel.Dock="Right"
+                Height="64" Width="90"
+                Margin="0 0 12 0"
+                Classes="Flat"
+                Command="{Binding OnClickLauncherButton}"
+                assists:ButtonAssist.CornerRadius="16">
+                <StackPanel Orientation="Vertical">
+                    <icon:MaterialIcon Kind="RocketLaunch" Foreground="White"/>
+                    <TextBlock Text="Launcher" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       Margin="6 0"
                       IsVisible="{Binding !BundleSelected}">

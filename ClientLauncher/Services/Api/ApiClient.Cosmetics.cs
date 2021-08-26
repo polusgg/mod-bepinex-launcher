@@ -68,9 +68,9 @@ namespace ClientLauncher.Services.Api
             {
                 RequestUri = new Uri($"{Context.CosmeticsUrl}/v1/bundle/{bundleId}/purchase/steam"),
                 Method = HttpMethod.Post,
-                Content =  new StringContent(JsonConvert.SerializeObject(new
+                Content = new StringContent(JsonConvert.SerializeObject(new
                 {
-                    UserId = SteamClient.SteamId.Value
+                    UserId = SteamClient.SteamId.Value.ToString()
                 }, _jsonSettings), Encoding.UTF8, "application/json")
             };
             request.Headers.TryAddWithoutValidation("Authorization", $"{model.ClientToken}:{model.ClientIdString}");
@@ -88,7 +88,7 @@ namespace ClientLauncher.Services.Api
 
             var request = new HttpRequestMessage
             {
-                RequestUri = new Uri($"{Context.CosmeticsUrl}/v1/purchases/{purchaseId}/finalize"),
+                RequestUri = new Uri($"{Context.CosmeticsUrl}/v1/purchases/{purchaseId}/finalise"),
                 Method = HttpMethod.Post,
             };
             request.Headers.TryAddWithoutValidation("Authorization", $"{model.ClientToken}:{model.ClientIdString}");

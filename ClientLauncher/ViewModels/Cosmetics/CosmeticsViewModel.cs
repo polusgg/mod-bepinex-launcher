@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Avalonia.X11;
 using ClientLauncher.Models.Cosmetics;
+using ClientLauncher.ViewModels.LandingPage;
 using DynamicData;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -18,12 +21,17 @@ namespace ClientLauncher.ViewModels.Cosmetics
         [Reactive] public BundleDetailsViewModel CurrentSeletedBundle { get; set; }
         [Reactive] public bool BundleSelected { get; set; }
         
+        public ICommand OnClickLauncherButton { get; }
+        
         public ICommand OnActivated { get; }
 
         public CosmeticsViewModel()
         {
             BundleCards = new ObservableCollection<BundleCardViewModel>();
             OnActivated = ReactiveCommand.CreateFromTask(GetBundleCardsAsync);
+
+            OnClickLauncherButton =
+                ReactiveCommand.CreateFromTask(async () => MainWindowViewModel.Instance.SwitchViewTo(new LandingPageViewModel()));
             
             this.WhenAnyValue(x => x.CurrentSeletedBundle).Subscribe(x => BundleSelected = x is not null);
         }
@@ -51,8 +59,11 @@ namespace ClientLauncher.ViewModels.Cosmetics
             CurrentSeletedBundle = bundle;
         }
         
-        public void OnCloseBundleDetails()
+        public void OnCloseBundleDetails(bool success)
         {
+            if (success)
+                BundleCards.Remove(BundleCards.First(x => x.Id == CurrentSeletedBundle.BundleId));
+
             CurrentSeletedBundle = null;
         }
     }
