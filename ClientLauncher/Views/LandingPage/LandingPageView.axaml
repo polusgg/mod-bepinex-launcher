@@ -23,7 +23,7 @@
                     HorizontalAlignment="Center" VerticalAlignment="Top"
                     Margin="0 32"
                     DockPanel.Dock="Top">
-            <Image Source="/Assets/polusgglogo.png"
+            <Image Source="/Assets/Polus_Logo_Outline.png"
                    VerticalAlignment="Center"
                    Width="128" Height="128"
                    Margin="0 0 64 0" />

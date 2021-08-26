@@ -36,7 +36,7 @@ namespace ClientLauncher
 
 
         // TODO: Swap back over to IsLaunchedToCosmetics
-        public static bool IsLaunchedToCosmetics => SteamApps.CommandLine == "--window=cosmetics";
+        public static bool IsLaunchedToCosmetics => SteamClient.IsValid && SteamApps.CommandLine == "--window=cosmetics";
 
         
         public static Configuration Configuration { get; set; } = new();

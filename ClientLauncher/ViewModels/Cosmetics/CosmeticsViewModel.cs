@@ -45,7 +45,7 @@ namespace ClientLauncher.ViewModels.Cosmetics
                     Id = bundle.Id,
                     Name = bundle.Name,
                     Description = bundle.Description,
-                    PriceFormatted = $"{bundle.PriceUsd / (double) 100:C}",
+                    PriceFormatted = $"${bundle.PriceUsd / (double) 100:N2}",
                     ForSale = bundle.ForSale,
                     KeyArtUrl = bundle.KeyArtUrl,
                     ParentViewModel = this
