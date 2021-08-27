@@ -43,7 +43,7 @@ namespace ClientLauncher.ViewModels.Cosmetics
                 var purchased = await Context.ApiClient.GetPurchases();
                 foreach (var bundle in await Context.ApiClient.GetAllBundles())
                 {
-                    if (purchased.All(x => x.BundleId != bundle.Id))
+                    if (purchased.All(x => !x.Finalized || x.BundleId != bundle.Id))
                     {
                         BundleCards.Add(new BundleCardViewModel
                         {
