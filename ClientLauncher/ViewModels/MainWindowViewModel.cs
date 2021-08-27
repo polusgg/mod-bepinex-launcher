@@ -9,6 +9,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using ClientLauncher.Extensions;
 using ClientLauncher.Models;
 using ClientLauncher.Services;
+using ClientLauncher.Services.Api;
 using ClientLauncher.Services.GameLocator;
 using ClientLauncher.ViewModels.AutoLaunch;
 using ClientLauncher.ViewModels.Cosmetics;
@@ -108,8 +109,31 @@ namespace ClientLauncher.ViewModels
             CurrentView = new LandingPageViewModel();
         }
 
-        public void SwitchViewTo(ViewModelBase vm)
+        public async Task SwitchViewTo(ViewModelBase vm)
         {
+            if (vm is CosmeticsViewModel)
+            {
+                try
+                {
+                    var model = GameVersionService.GetAuthModel();
+                    if (model.LoggedInDateTime < DateTime.Now.AddDays(-5))
+                    {
+                        var response = await Context.ApiClient.CheckToken(model.ClientIdString, model.ClientToken);
+                        if (response.Data.ClientToken != model.ClientToken)
+                        { 
+                            await WarnDialog.Handle("You aren't logged in to Polus.gg in Among Us!");
+                            return;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e.Message}\n{e.StackTrace}");
+                    await WarnDialog.Handle("You aren't logged in to Polus.gg in Among Us!");
+                    return;
+                }
+            } 
+            
             CurrentView = vm;
         }
     }

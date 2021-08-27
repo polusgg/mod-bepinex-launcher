@@ -20,18 +20,6 @@ namespace ClientLauncher.Services.Api
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
         
-        private SavedAuthModel GetAuthModel()
-        {
-            var model = JsonConvert.DeserializeObject<SavedAuthModel>(
-                Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(Path.Combine(Context.ModdedAmongUsLocation, "api.txt"))))
-            );
-
-            if (model is null)
-                throw new InvalidOperationException(
-                    "Could not find api.txt from Among Us, are you logged in on the client?");
-            return model;
-        }
-        
         public async Task<CosmeticBundle[]> GetAllBundles()
         {
             var bundles = await _client.GetFromJsonAsync<CosmeticBundle[]>($"{Context.CosmeticsUrl}/v1/bundle");
@@ -40,9 +28,27 @@ namespace ClientLauncher.Services.Api
             return bundles;
         }
         
+        public async Task<CosmeticPurchase[]> GetPurchases()
+        {
+            var model = GameVersionService.GetAuthModel();
+            
+            var request = new HttpRequestMessage
+            {
+                RequestUri = new Uri($"{Context.CosmeticsUrl}/v1/purchases/"),
+                Method = HttpMethod.Get
+            };
+            request.Headers.TryAddWithoutValidation("Authorization", $"{model.ClientToken}:{model.ClientIdString}");
+
+            var response = await (await _client.SendAsync(request)).Content.ReadFromJsonAsync<CosmeticsGenericResponse<CosmeticPurchase[]>>();
+            if (response is null)
+                throw new WebException("Could not fetch cosmetic purchases.");
+            
+            return response.Data;
+        }
+        
         public async Task<CosmeticBundle> GetBundle(string bundleId)
         {
-            var bundle = await _client.GetFromJsonAsync<GenericResponse<CosmeticBundle>>($"{Context.CosmeticsUrl}/v1/bundle/{bundleId}");
+            var bundle = await _client.GetFromJsonAsync<CosmeticsGenericResponse<CosmeticBundle>>($"{Context.CosmeticsUrl}/v1/bundle/{bundleId}");
             if (bundle is null)
                 throw new WebException($"Could not fetch cosmetic bundle id '{bundleId}'.");
             return bundle.Data;
@@ -50,7 +56,7 @@ namespace ClientLauncher.Services.Api
         
         public async Task<CosmeticItem> GetItem(string itemId)
         {
-            var item = await _client.GetFromJsonAsync<GenericResponse<CosmeticItem>>($"{Context.CosmeticsUrl}/v1/item/{itemId}");
+            var item = await _client.GetFromJsonAsync<CosmeticsGenericResponse<CosmeticItem>>($"{Context.CosmeticsUrl}/v1/item/{itemId}");
             if (item is null)
                 throw new WebException($"Could not fetch cosmetic item id '{itemId}'.");
             return item.Data;
@@ -62,7 +68,7 @@ namespace ClientLauncher.Services.Api
                 throw new InvalidOperationException(
                     $"Cannot InitMicroTransaction for bundle '{bundleId}', Steam is not initialized");
             
-            var model = GetAuthModel();
+            var model = GameVersionService.GetAuthModel();
 
             var request = new HttpRequestMessage
             {
@@ -84,7 +90,7 @@ namespace ClientLauncher.Services.Api
 
         public async Task FinalizeTransaction(string purchaseId)
         {
-            var model = GetAuthModel();
+            var model = GameVersionService.GetAuthModel();
 
             var request = new HttpRequestMessage
             {

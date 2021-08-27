@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
         
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -35,6 +35,7 @@
             <HintPath>..\Facepunch.Steamworks\Facepunch.Steamworks.Win64.dll</HintPath>
         </Reference>
         <Content Include="..\Facepunch.Steamworks\redistributable_bin\win64\steam_api64.dll" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+        <Content Include="..\Facepunch.Steamworks\av_libglesv2.dll" CopyToOutputDirectory="Never" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
 
     <ItemGroup Condition="$(IsWindows) != 'True'">

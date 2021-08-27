@@ -38,18 +38,29 @@ namespace ClientLauncher.ViewModels.Cosmetics
 
         public async Task GetBundleCardsAsync()
         {
-            foreach (var bundle in await Context.ApiClient.GetAllBundles())
+            try
             {
-                BundleCards.Add(new BundleCardViewModel
+                var purchased = await Context.ApiClient.GetPurchases();
+                foreach (var bundle in await Context.ApiClient.GetAllBundles())
                 {
-                    Id = bundle.Id,
-                    Name = bundle.Name,
-                    Description = bundle.Description,
-                    PriceFormatted = $"${bundle.PriceUsd / (double) 100:N2}",
-                    ForSale = bundle.ForSale,
-                    KeyArtUrl = bundle.KeyArtUrl,
-                    ParentViewModel = this
-                });
+                    if (purchased.All(x => x.BundleId != bundle.Id))
+                    {
+                        BundleCards.Add(new BundleCardViewModel
+                        {
+                            Id = bundle.Id,
+                            Name = bundle.Name,
+                            Description = bundle.Description,
+                            PriceFormatted = $"${bundle.PriceUsd / (double) 100:N2}",
+                            ForSale = bundle.ForSale,
+                            KeyArtUrl = bundle.KeyArtUrl,
+                            ParentViewModel = this
+                        });
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error fetching bundles from cosmetics server..");
             }
         }
 

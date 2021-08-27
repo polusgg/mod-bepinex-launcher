@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,18 @@ namespace ClientLauncher.Services
             var index = bytes.IndexOfPattern(pattern) + pattern.Length + 127;
 
             return Encoding.UTF8.GetString(bytes.Skip(index).TakeWhile(x => x != 0).ToArray());
+        }
+        
+        public static SavedAuthModel GetAuthModel()
+        {
+            var model = JsonConvert.DeserializeObject<SavedAuthModel>(
+                Encoding.UTF8.GetString(Convert.FromBase64String(File.ReadAllText(Path.Combine(Context.ModdedAmongUsLocation, "api.txt"))))
+            );
+
+            if (model is null)
+                throw new InvalidOperationException(
+                    "Could not find api.txt from Among Us, are you logged in on the client?");
+            return model;
         }
     }
 }

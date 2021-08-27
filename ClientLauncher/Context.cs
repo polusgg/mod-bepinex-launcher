@@ -23,6 +23,7 @@ namespace ClientLauncher
         
         //TODO: hardcode value later
         public static string CosmeticsUrl => "http://cosmetics.service.polus.gg:2219";
+        public static string AccountServerUrl => "https://account.polus.gg";
         
         public static string DataPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

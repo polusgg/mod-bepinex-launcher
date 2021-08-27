@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:ClientLauncher.ViewModels.Cosmetics"
              xmlns:icon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ClientLauncher.Views.Cosmetics.CosmeticsView"
              MinWidth="800" MinHeight="600">
@@ -37,6 +38,18 @@
                 </StackPanel>
             </Button>
         </DockPanel>
+
+        <TextBlock
+            Margin="305 150 0 0"
+            Text="No more bundles on sale to buy!">
+            <TextBlock.IsVisible>
+                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                    <Binding Path="!BundleCards.Count" />
+                    <Binding Path="!BundleSelected" />
+                </MultiBinding>
+            </TextBlock.IsVisible>
+        </TextBlock>
+
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       Margin="6 0"
                       IsVisible="{Binding !BundleSelected}">
@@ -48,6 +61,7 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
+
         <UserControl Content="{Binding CurrentSeletedBundle}" 
                      IsVisible="{Binding BundleSelected}" />
     </DockPanel>
