@@ -1,5 +1,5 @@
 {
-  "version": 25,
+  "version": 26,
   "files": [
     {
       "installPath": "region.txt",
@@ -39,12 +39,12 @@
     {
       "installPath": "BepInEx/plugins/PolusggSlim.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
-      "sha256": "06E7C44BF71AF7D0DF6A92BE417019A6D1F3CAA8071911096DAE23B7ABBCA0DC"
+      "sha256": "5E4E72D62FE17A6D8FAE8228C968B1DFE5D1AFD563E96CB63422C42C5FF92F3D"
     },
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "15D847468B4ECB91940E2D48D73261EA4CB973C0161D7DD56BD8033DC484BFC3"
+      "sha256": "965A1BCFE5C2958E5B7A0AC4F96BD4C31391526F1494565183B0DC107DD74F94"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
