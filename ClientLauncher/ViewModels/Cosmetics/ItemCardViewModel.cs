@@ -60,11 +60,21 @@ namespace ClientLauncher.ViewModels.Cosmetics
             //TODO: thumbnail generation
             if (Type == "PET")
             {
-                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/{Name}/pet.png"));
+                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/pet.png"));
             }
             else if (Type == "HAT")
             {
-                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/{Name}/front.png"));
+                byte[] image;
+                try
+                {
+                    image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/front.png");
+                }
+                catch (Exception)
+                {
+                    image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/back.png");
+                }
+
+                await File.WriteAllBytesAsync(ThumbnailCachePath, image);
             }
         }
     }
