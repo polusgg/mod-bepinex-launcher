@@ -46,7 +46,13 @@ namespace ClientLauncher.Services.GameLocator
                     if (!int.TryParse(libraryFolder.Key, out _))
                         continue;
 
-                    libraries.Add(Path.Combine(libraryFolder.Value.Value<string>(), "steamapps"));
+                    foreach (var libraryFolderKey in libraryFolder.Value.Children<VProperty>())
+                    {
+                        if (String.Equals(libraryFolderKey.Key, "path"))
+                        {
+                            libraries.Add(Path.Combine(libraryFolderKey.Value.Value<string>(), "steamapps"));
+                        }
+                    }
                 }
             }
 
