@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using ClientLauncher.Models;
 using ClientLauncher.Services;
 using ClientLauncher.Services.GameLocator;
 using ClientLauncher.ViewModels.Cosmetics;
+using HarmonyLib;
 using Newtonsoft.Json;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
@@ -58,7 +60,10 @@ namespace ClientLauncher.ViewModels.LandingPage
 
             ChooseFileCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                var amongUsLocation = await FileChooserDialog.Handle(Unit.Default).FirstAsync() ?? VanillaAmongUsLocation;
+                var amongUsLocation = await FileChooserDialog.Handle(Unit.Default).FirstAsync();
+
+                if (string.IsNullOrEmpty(amongUsLocation))
+                    return;
 
                 var gameExists = GameIntegrityService.AmongUsGameExists(new GameInstall
                 {
@@ -90,7 +95,7 @@ namespace ClientLauncher.ViewModels.LandingPage
 
         private void UpdateManifestVersion()
         {
-            var versionString = new string[3];
+            var versionString = new List<string>();
 
             var gameInstall = new GameInstall
             {
@@ -98,7 +103,7 @@ namespace ClientLauncher.ViewModels.LandingPage
             };
             if (GameIntegrityService.AmongUsGameExists(gameInstall))
             {
-                versionString[0] = $"Game Version: {GameVersionService.ParseVersion(gameInstall)}";
+                versionString.Add($"Game Version: {GameVersionService.ParseVersion(gameInstall)}");
             }
             
             var moddedInstall = new GameInstall
@@ -108,11 +113,11 @@ namespace ClientLauncher.ViewModels.LandingPage
             if (GameIntegrityService.AmongUsGameExists(moddedInstall) &&
                 File.Exists(moddedInstall.ModPackageManifestJson))
             {
-                versionString[1] = $"Modded Version: {GameVersionService.ParseVersion(moddedInstall)}";
+                versionString.Add($"Modded Version: {GameVersionService.ParseVersion(moddedInstall)}");
                 
                 var manifest = JsonConvert.DeserializeObject<ModPackageManifest>(File.ReadAllText(moddedInstall.ModPackageManifestJson));
                 if (manifest is not null)
-                    versionString[2] = $"Package Version: {manifest.Version}";
+                    versionString.Add($"Package Version: {manifest.Version}");
             }
 
             ManifestVersion = string.Join(", ", versionString);
