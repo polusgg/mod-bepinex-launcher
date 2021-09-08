@@ -30,7 +30,7 @@
                 <TextBlock Classes="Headline4" Margin="0 8" Text="{Binding Bundle.Name}" />
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="12" Margin="0 0 2 0">By: </TextBlock>
-                    <TextBlock FontSize="12" FontWeight="Light" Text="{Binding Bundle.Author}" />
+                    <TextBlock FontSize="12" FontWeight="Light" Text="{Binding Authors}" />
                 </StackPanel>
                 <Separator />
                 <TextBlock Classes="Body2"

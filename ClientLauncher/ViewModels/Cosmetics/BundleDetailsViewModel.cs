@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia.Media.Imaging;
@@ -17,6 +19,8 @@ namespace ClientLauncher.ViewModels.Cosmetics
         
         public ObservableCollection<ItemCardViewModel> Items { get; }
         [Reactive] public CosmeticBundle Bundle { get; set; }
+        
+        [Reactive] public string Authors { get; set; }
         
         [Reactive] public Bitmap KeyArtBitmap { get; set; }
         private string KeyArtCachePath => Path.Combine(Context.CachePath, $"cosmetic_{BundleId}.png");
@@ -65,11 +69,13 @@ namespace ClientLauncher.ViewModels.Cosmetics
             Bundle = bundle;
             await LoadKeyArtAsync();
 
+            HashSet<string> authors = new();
             foreach (var itemId in bundle.Items)
             {
                 try
                 {
                     var cosmeticItem = await Context.ApiClient.GetItem(itemId);
+                    authors.Add(cosmeticItem.AuthorDisplayName);
                     var itemCardVm = new ItemCardViewModel(cosmeticItem.Name, cosmeticItem.Type, BundleId,
                         cosmeticItem.Id, cosmeticItem.Thumbnail);
 
@@ -80,6 +86,8 @@ namespace ClientLauncher.ViewModels.Cosmetics
                     Console.WriteLine($"{e.Message}\n{e.StackTrace}");
                 }
             }
+
+            Authors = string.Join(", ", authors);
         }
         
         private async Task LoadKeyArtAsync()
