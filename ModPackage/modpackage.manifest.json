@@ -1,10 +1,10 @@
 {
-  "version": 27,
+  "version": 28,
   "files": [
     {
       "installPath": "region.txt",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/region.txt",
-      "sha256": "FBC8B9F62BEA69EDC306D5E5F3D5227019C423C8215B1907487D0F0AE53168DB"
+      "sha256": "51F40EA4E3F1823C0C2806C0433FE807A3F6202E8FC6E411BCA73CFD219BB48B"
     },
     {
       "installPath": "steam_appid.txt",
@@ -44,7 +44,7 @@
     {
       "installPath": "BepInEx/plugins/Polus.dll",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "CD3D448C07E2F5BCE3B0A59E11208DCE2581E97FEA63A2F0BB00A196F129A1BB"
+      "sha256": "A07BB901F978B4F8BD92F551542A5FA109BBF5460F3DA3543B803470D13FC51F"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
@@ -59,7 +59,7 @@
     {
       "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
-      "sha256": "C7DF2A618DCBA820ECF18F87EBCE548F80FA3BC3E0A723714BEAC912A4863B19"
+      "sha256": "BF3EAD4B99D187D72C0D44344CA7AFCA94DA8A2C4BB85CDEB8038221A21C94FA"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
