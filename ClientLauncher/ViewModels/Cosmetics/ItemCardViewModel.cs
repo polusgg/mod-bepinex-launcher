@@ -18,9 +18,12 @@ namespace ClientLauncher.ViewModels.Cosmetics
         public string ThumbnailUrl { get; set; }
         
         [Reactive] public Bitmap ThumbnailBitmap { get; set; }
-        private string ThumbnailCachePath => Path.Combine(Context.CachePath, $"cosmetic_{BundleId}_{ItemId}.png");
+        [Reactive] public Bitmap ThumbnailSecondaryBitmap { get; set; }
 
-        public ICommand OnActivated { get; }
+        private string ThumbnailCachePath => Path.Combine(Context.CachePath, $"cosmetic_{BundleId}_{ItemId}.png");
+        private string ThumbnailSecondaryCachePath => Path.Combine(Context.CachePath, $"cosmetic_{BundleId}_{ItemId}_secondary.png");
+        
+        // public ICommand OnActivated { get; }
         
         public ItemCardViewModel(string name, string type, string bundleId, string itemId, string thumbnailUrl)
         {
@@ -29,8 +32,6 @@ namespace ClientLauncher.ViewModels.Cosmetics
             BundleId = bundleId;
             ItemId = itemId;
             ThumbnailUrl = thumbnailUrl;
-
-            OnActivated = ReactiveCommand.CreateFromTask(LoadKeyArtAsync);
         }
         
         public async Task LoadKeyArtAsync()
@@ -39,11 +40,18 @@ namespace ClientLauncher.ViewModels.Cosmetics
             {
                 if (File.Exists(ThumbnailCachePath))
                     ThumbnailBitmap = new Bitmap(ThumbnailCachePath);
+                
+                if (File.Exists(ThumbnailSecondaryCachePath))
+                    ThumbnailSecondaryBitmap = new Bitmap(ThumbnailSecondaryCachePath);
 
                 if (!string.IsNullOrEmpty(ThumbnailUrl))
                 {
                     await SaveKeyArtAsync();
-                    ThumbnailBitmap = new Bitmap(ThumbnailCachePath);
+                    if (File.Exists(ThumbnailCachePath))
+                        ThumbnailBitmap = new Bitmap(ThumbnailCachePath);
+                    
+                    if (File.Exists(ThumbnailSecondaryCachePath)) 
+                        ThumbnailSecondaryBitmap = new Bitmap(ThumbnailSecondaryCachePath);
                 }
             }
             catch (Exception e)
@@ -52,7 +60,7 @@ namespace ClientLauncher.ViewModels.Cosmetics
             }
         }
 
-        private async ValueTask SaveKeyArtAsync()
+        private async Task SaveKeyArtAsync()
         {
             if (!Directory.Exists(Context.CachePath))
                 Directory.CreateDirectory(Context.CachePath);
@@ -60,21 +68,24 @@ namespace ClientLauncher.ViewModels.Cosmetics
             //TODO: thumbnail generation
             if (Type == "PET")
             {
-                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/pet.png"));
+                await File.WriteAllBytesAsync(ThumbnailCachePath, await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/{Name}/pet.png"));
             }
             else if (Type == "HAT")
             {
-                byte[] image;
                 try
                 {
-                    image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/front.png");
+                    var image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/front.png");
+                    await File.WriteAllBytesAsync(ThumbnailCachePath, image);
+                    var secondaryImage = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/back.png"); // TODO: figure out why this fails (item id changes)
+                    await File.WriteAllBytesAsync(ThumbnailSecondaryCachePath, secondaryImage);
                 }
-                catch (Exception)
-                {
-                    image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}/back.png");
-                }
+                catch (Exception) { }
 
+            } else if (Type == "PERK")
+            {
+                var image = await Context.ApiClient.DownloadImage($"{ThumbnailUrl}");
                 await File.WriteAllBytesAsync(ThumbnailCachePath, image);
+
             }
         }
     }

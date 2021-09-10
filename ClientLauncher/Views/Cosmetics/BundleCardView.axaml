@@ -11,10 +11,11 @@
         <vm:BundleCardViewModel />
     </Design.DataContext>
 
-    <Panel Margin=" 16 16">
-        <styles:Card Width="360" Padding="4" VerticalAlignment="Top">
+    <Panel Margin="8">
+        <styles:Card Width="320" Padding="4" VerticalAlignment="Top">
             <DockPanel>
                 <Image Source="{Binding KeyArtBitmap}"
+                       VerticalAlignment="Top"
                        Width="96" Height="96"
                        Margin="0 0 16 0"
                        DockPanel.Dock="Left" />
@@ -22,9 +23,7 @@
                     <Button Classes="Dark"
                             Click="Button_OnClick"
                             HorizontalAlignment="Right">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding PriceFormatted}"></TextBlock>
-                        </StackPanel>
+                        <TextBlock Text="{Binding PriceFormatted}"></TextBlock>
                     </Button>
                 </Panel>
                 <StackPanel Orientation="Vertical">

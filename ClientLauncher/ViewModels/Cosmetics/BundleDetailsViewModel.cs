@@ -99,6 +99,8 @@ namespace ClientLauncher.ViewModels.Cosmetics
                     var itemCardVm = new ItemCardViewModel(cosmeticItem.Name, cosmeticItem.Type, BundleId,
                         cosmeticItem.Id, cosmeticItem.Thumbnail);
 
+                    await itemCardVm.LoadKeyArtAsync();
+
                     Items.Add(itemCardVm);
                 }
                 catch (Exception e)

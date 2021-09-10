@@ -5,17 +5,24 @@
              xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ClientLauncher.Views.Cosmetics.ItemCardView">
-    <styles:Card Margin="4">
-        <DockPanel>
-            <Image Source="{Binding ThumbnailBitmap}"
-                   Width="32" Height="32"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Margin="0 0 12 0"
-                   DockPanel.Dock="Left">
-            </Image>
+    <styles:Card Margin="4" MaxWidth="192" Background="#4a4a4a">
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid Width="128" Height="128" DockPanel.Dock="Top" Margin="0 0 12 0">
+                <Image Source="{Binding ThumbnailBitmap}"
+                       Width="128" Height="128"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Stretch="Uniform" />
+                <Image Source="{Binding ThumbnailSecondaryBitmap}"
+                       Width="128" Height="128"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Stretch="Uniform" />
+            </Grid>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                <TextBlock Classes="Body2" Text="{Binding Name}" />
+                <TextBlock Classes="Body2"
+                           TextWrapping="Wrap"
+                           Text="{Binding Name}" />
                 <TextBlock Classes="Caption" Text="{Binding Type}" />
             </StackPanel>
         </DockPanel>

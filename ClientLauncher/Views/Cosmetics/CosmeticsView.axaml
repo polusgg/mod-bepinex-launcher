@@ -8,7 +8,7 @@
              xmlns:styles="clr-namespace:Material.Styles;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ClientLauncher.Views.Cosmetics.CosmeticsView"
-             MinWidth="800" MinHeight="600">
+             MinWidth="1020" MinHeight="720">
     <Design.DataContext>
         <vm:CosmeticsViewModel />
     </Design.DataContext>
@@ -18,7 +18,7 @@
             <ImageBrush Source="/Assets/cliffs.png" AlignmentY="Bottom" />
         </DockPanel.Background>
         <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                   Margin="0 32 0 0"
+                   Margin="0 24 0 0"
                    DockPanel.Dock="Top"
                    LastChildFill="False">
             <Image Source="/Assets/Polus_Logo_Outline_With_Text.png"
@@ -37,15 +37,28 @@
                     <TextBlock Text="Launcher" Foreground="White"/>
                 </StackPanel>
             </Button>
+            <Button
+                DockPanel.Dock="Right"
+                Height="64" Width="120"
+                Margin="0 0 12 0"
+                Classes="Flat"
+                Command="{Binding OnClickRefundButton}"
+                assists:ButtonAssist.CornerRadius="16">
+                <StackPanel Orientation="Vertical">
+                    <icon:MaterialIcon Kind="Dollar" Foreground="White"/>
+                    <TextBlock Text="Subscriptions" Foreground="White"/>
+                </StackPanel>
+            </Button>
         </DockPanel>
 
         <TextBlock
-            Margin="305 150 0 0"
+            Margin="375 160 0 0"
             Text="No more bundles on sale to buy!">
             <TextBlock.IsVisible>
                 <MultiBinding Converter="{x:Static BoolConverters.And}">
                     <Binding Path="!BundleCards.Count" />
                     <Binding Path="!BundleSelected" />
+                    <Binding Path="AttemptedLoad" />
                 </MultiBinding>
             </TextBlock.IsVisible>
         </TextBlock>
@@ -61,8 +74,8 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
-
-        <UserControl Content="{Binding CurrentSeletedBundle}" 
+        
+        <UserControl Content="{Binding CurrentSeletedBundle}"
                      IsVisible="{Binding BundleSelected}" />
     </DockPanel>
 </UserControl>

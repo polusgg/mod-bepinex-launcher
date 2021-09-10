@@ -8,8 +8,20 @@
 
     <styles:Card Margin="20">
         <DockPanel>
-            <Image Source="{Binding KeyArtBitmap}" Width="128" Height="128" DockPanel.Dock="Left"
-                   VerticalAlignment="Top" />
+            <DockPanel Dock="Top">
+                <Image Source="{Binding KeyArtBitmap}" Width="128" Height="128" DockPanel.Dock="Left" />
+                <StackPanel Margin="12 0">
+                    <TextBlock Classes="Headline4" Margin="0 8" Text="{Binding Bundle.Name}" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="12" Margin="0 0 2 0">By: </TextBlock>
+                        <TextBlock FontSize="12" FontWeight="Light" Text="{Binding Authors}" />
+                    </StackPanel>
+                    <Separator />
+                    <TextBlock Classes="Body2"
+                               TextWrapping="Wrap"
+                               Text="{Binding Bundle.Description}" />
+                </StackPanel>
+            </DockPanel>
             <DockPanel DockPanel.Dock="Bottom">
                 <Button
                     DockPanel.Dock="Right"
@@ -28,21 +40,11 @@
                 <TextBlock Classes="Body2" FontWeight="Bold"
                            VerticalAlignment="Center">All proceeds go to modders at Polus.gg, not Innersloth</TextBlock>
             </DockPanel>
-            <StackPanel Margin="12 0">
-                <TextBlock Classes="Headline4" Margin="0 8" Text="{Binding Bundle.Name}" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Margin="0 0 2 0">By: </TextBlock>
-                    <TextBlock FontSize="12" FontWeight="Light" Text="{Binding Authors}" />
-                </StackPanel>
-                <Separator />
-                <TextBlock Classes="Body2"
-                           TextWrapping="Wrap"
-                           Text="{Binding Bundle.Description}" />
-
+            <StackPanel Orientation="Vertical">
                 <TextBlock Classes="Subtitle1" Margin="0 18 0 0">Items Included</TextBlock>
                 <ScrollViewer VerticalAlignment="Stretch"
                               HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
-                              MaxHeight="182">
+                              MaxHeight="280">
                     <ItemsControl Items="{Binding Items}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
