@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -45,12 +46,27 @@ namespace ClientLauncher.ViewModels.Cosmetics
                 {
                     if (purchased.All(x => !x.Finalized || x.BundleId != bundle.Id))
                     {
+                        var priceDecimal = Math.Round(bundle.PriceUsd / (double)100, 2);
+
+                        String formattedText;
+                        if (bundle.PriceUsd <= 0)
+                        {
+                            formattedText = "Claim";
+                        } else if (bundle.Recurring)
+                        {
+                            formattedText = $"${priceDecimal}/mo";
+                        }
+                        else
+                        {
+                            formattedText = $"Buy - ${priceDecimal}";
+                        }
+                        
                         BundleCards.Add(new BundleCardViewModel
                         {
                             Id = bundle.Id,
                             Name = bundle.Name,
                             Description = bundle.Description,
-                            PriceFormatted = $"${bundle.PriceUsd / (double) 100:N2}",
+                            PriceFormatted = formattedText,
                             ForSale = bundle.ForSale,
                             KeyArtUrl = bundle.KeyArtUrl,
                             ParentViewModel = this

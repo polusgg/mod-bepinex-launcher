@@ -16,7 +16,9 @@
                     Margin="4 0"
                     Background="{StaticResource GreenAccent700}"
                     BorderBrush="{StaticResource GreenAccent700}"
-                    Click="BuyButton_OnClick">Buy</Button>
+                    Click="BuyButton_OnClick"
+                    Content="{Binding BuyButtonText}"
+                ></Button>
                 <Button
                     DockPanel.Dock="Right"
                     Margin="4 0"

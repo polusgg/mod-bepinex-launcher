@@ -23,7 +23,6 @@
                             Click="Button_OnClick"
                             HorizontalAlignment="Right">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0 0 4 0">Buy -</TextBlock>
                             <TextBlock Text="{Binding PriceFormatted}"></TextBlock>
                         </StackPanel>
                     </Button>

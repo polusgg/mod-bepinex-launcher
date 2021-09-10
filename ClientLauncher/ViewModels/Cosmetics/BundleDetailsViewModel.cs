@@ -20,6 +20,8 @@ namespace ClientLauncher.ViewModels.Cosmetics
         public ObservableCollection<ItemCardViewModel> Items { get; }
         [Reactive] public CosmeticBundle Bundle { get; set; }
         
+        [Reactive] public string BuyButtonText { get; set; }
+        
         [Reactive] public string Authors { get; set; }
         
         [Reactive] public Bitmap KeyArtBitmap { get; set; }
@@ -67,6 +69,24 @@ namespace ClientLauncher.ViewModels.Cosmetics
         {
             var bundle = await Context.ApiClient.GetBundle(BundleId);
             Bundle = bundle;
+
+            var priceDecimal = Math.Round(bundle.PriceUsd / (double)100, 2);
+
+            String formattedText;
+            if (bundle.PriceUsd <= 0)
+            {
+                formattedText = "Claim";
+            } else if (bundle.Recurring)
+            {
+                formattedText = $"Subscribe - ${priceDecimal}/mo";
+            }
+            else
+            {
+                formattedText = $"Buy - ${priceDecimal}";
+            }
+            
+            BuyButtonText = formattedText;
+            
             await LoadKeyArtAsync();
 
             HashSet<string> authors = new();
