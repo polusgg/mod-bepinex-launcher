@@ -26,7 +26,11 @@ namespace ClientLauncher.Services
 
                 await using var zipStream = await Context.ApiClient.DownloadFileAsync(releaseAsset.BrowserDownloadUrl);
 
-                Directory.Delete(Path.Combine(install.BepInExFolder));
+                if (Directory.Exists(install.BepInExFolder))
+                    Directory.Delete(install.BepInExFolder, true);
+
+                Directory.CreateDirectory(install.BepInExFolder);
+
                 using var zip = new ZipArchive(zipStream);
                 zip.ExtractToDirectory(install.Location);
 

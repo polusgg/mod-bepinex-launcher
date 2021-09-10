@@ -49,6 +49,7 @@ namespace ClientLauncher.ViewModels.LandingPage
         public ICommand InstallGame { get; }
         
         public ICommand OnClickCosmeticsButton { get; }
+        public ICommand OnClickDataPathButton { get; }
 
         public Interaction<Unit, string?> FileChooserDialog { get; }
         public Interaction<string, Unit> WarnDialog { get; }
@@ -89,6 +90,14 @@ namespace ClientLauncher.ViewModels.LandingPage
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
 
             OnClickCosmeticsButton = ReactiveCommand.CreateFromTask(async () => MainWindowViewModel.Instance.SwitchViewTo(new CosmeticsViewModel()));
+
+            OnClickDataPathButton = ReactiveCommand.CreateFromTask(async () =>
+            {
+                if (Directory.Exists(Context.ModdedAmongUsLocation))
+                    Directory.Delete(Context.ModdedAmongUsLocation, true);
+
+                await InstallGameAsync();
+            });
 
             this.WhenAnyValue(x => x.VanillaAmongUsLocation).Subscribe(_ => UpdateManifestVersion());
         }

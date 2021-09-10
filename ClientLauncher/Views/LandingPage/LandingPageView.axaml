@@ -36,11 +36,24 @@
         <Panel HorizontalAlignment="Stretch"
                Margin="0 0 0 32" 
                DockPanel.Dock="Bottom">
+            <Button
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Height="64" Width="120"
+                Margin="12 0 0 0"
+                Classes="Flat"
+                Command="{Binding OnClickDataPathButton}"
+                assists:ButtonAssist.CornerRadius="16">
+                <StackPanel Orientation="Vertical">
+                    <avalonia:MaterialIcon Kind="Restore" Foreground="White"/>
+                    <TextBlock Text="Clean Install" Foreground="White"/>
+                </StackPanel>
+            </Button>
             <Panel
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Height="50">
                 <Button Classes="Dark" Background="#4c1d95"
                         Width="128" Padding="12"
+                        IsEnabled="{Binding !IsInstallProgressing}"
                         Command="{Binding InstallGame}">
                     <TextBlock FontSize="18">Launch</TextBlock>
                 </Button>
