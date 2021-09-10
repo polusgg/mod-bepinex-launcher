@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Width="1020" Height="720"
         MaxWidth="1020" MaxHeight="720"
-        MinWidth="960" MinHeight="720"
+        MinWidth="1020" MinHeight="720"
         Icon="/Assets/polusgglogo.png"
         Title="Polus.gg"
 >
