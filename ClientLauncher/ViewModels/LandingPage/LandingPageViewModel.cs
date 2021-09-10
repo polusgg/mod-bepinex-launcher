@@ -146,6 +146,8 @@ namespace ClientLauncher.ViewModels.LandingPage
                     return;
                 }
 #endif
+                
+                
                 if (!GameIntegrityService.AmongUsGameExists(vanillaInstall))
                 {
                     IsInstallProgressing = false;
@@ -160,10 +162,11 @@ namespace ClientLauncher.ViewModels.LandingPage
                     {
                         await vanillaInstall.CopyTo(moddedInstall);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
                         IsInstallProgressing = false;
-                        await WarnDialog.Handle($"Couldn't setup modded install directory.");
+                        LoggingService.LogError($"Couldn't setup modded install directory: {e.Message}\n{e.StackTrace}");
+                        await WarnDialog.Handle("Couldn't setup modded install directory.");
                         return;
                     }
                 }
@@ -172,10 +175,11 @@ namespace ClientLauncher.ViewModels.LandingPage
                 {
                     await DownloadService.DownloadBepInExAsync(moddedInstall);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     IsInstallProgressing = false;
-                    await WarnDialog.Handle($"Couldn't install BepInEx.");
+                    LoggingService.LogError($"Couldn't install BepInEx: {e.Message}\n{e.StackTrace}");
+                    await WarnDialog.Handle("Couldn't install BepInEx.");
                     return;
                 }
         
@@ -186,19 +190,27 @@ namespace ClientLauncher.ViewModels.LandingPage
                 catch (Exception e)
                 {
                     IsInstallProgressing = false;
-                    Console.WriteLine($"Execption installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
+                    LoggingService.LogError($"Exception installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
                     await WarnDialog.Handle($"Couldn't install Polusgg mod.");
                     return;
                 }
 
-                UpdateManifestVersion();
-                await moddedInstall.LaunchGame();
+                try
+                {
+                    UpdateManifestVersion();
+                    await moddedInstall.LaunchGame();
+                }
+                catch (Exception e)
+                {
+                    LoggingService.LogError($"Exception while launching game: {e.Message}\n{e.StackTrace}");
+                    await WarnDialog.Handle($"Caught exception when launching game.");
+                }
         
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Exception while launching game: {e.Message}\n{e.StackTrace}");
-                await WarnDialog.Handle($"Caught exception when launching game.");
+                LoggingService.LogError($"Exception while launching game: {e.Message}\n{e.StackTrace}");
+                await WarnDialog.Handle($"Unknown error when launching game.");
             }
             finally
             {

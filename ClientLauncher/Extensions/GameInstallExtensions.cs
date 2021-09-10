@@ -26,6 +26,9 @@ namespace ClientLauncher.Extensions
             var basePath = Path.GetFullPath(install.Location);
             foreach (var filePath in Directory.EnumerateFiles(install.Location, "*", SearchOption.AllDirectories).Select(Path.GetFullPath))
             {
+                if (Directory.Exists(filePath) && Path.GetFileName(filePath) != "Among Us_Data")
+                    continue;
+
                 var rebasedPath = filePath.Replace(basePath, "").TrimStart('/');
                 rebasedPath = Path.Join(newInstallPath, rebasedPath);
 
