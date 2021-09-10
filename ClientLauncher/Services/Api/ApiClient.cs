@@ -16,11 +16,12 @@ namespace ClientLauncher.Services.Api
             _client = new HttpClient();
         }
 
-        public async Task<FileInfo> DownloadFileAsync(string downloadUrl, string? name = null)
+        public async Task<MemoryStream> DownloadFileAsync(string downloadUrl, string? name = null)
         {
             Console.WriteLine(downloadUrl);
-            var stream = await _client.GetStreamAsync(downloadUrl);
-            return await stream.SaveStreamToTempFile(name ?? Guid.NewGuid().ToString());
+            var memoryStream = new MemoryStream();
+            await (await _client.GetStreamAsync(downloadUrl)).CopyToAsync(memoryStream);
+            return memoryStream;
         }
 
         public async Task<ModPackageManifest> GetModPackageManifestAsync(string version)

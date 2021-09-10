@@ -54,7 +54,9 @@ namespace ClientLauncher.Services
                 if (baseDir is not null)
                     Directory.CreateDirectory(baseDir);
 
-                downloadedFile.CopyTo(installPath, true);
+                File.Delete(installPath);
+                await using var fileStream = File.OpenWrite(installPath);
+                await downloadedFile.CopyToAsync(fileStream);
             }
             
             await File.WriteAllTextAsync(install.ModPackageManifestJson, JsonConvert.SerializeObject(manifest));
