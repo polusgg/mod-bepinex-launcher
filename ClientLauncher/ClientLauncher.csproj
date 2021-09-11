@@ -5,7 +5,7 @@
         <Nullable>enable</Nullable>
         <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
         
-        <Version>0.2.6</Version>
+        <Version>0.2.7</Version>
     </PropertyGroup>
 
     <ItemGroup>
