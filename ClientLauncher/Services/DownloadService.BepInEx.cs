@@ -32,7 +32,7 @@ namespace ClientLauncher.Services
                 Directory.CreateDirectory(install.BepInExFolder);
 
                 using var zip = new ZipArchive(zipStream);
-                zip.ExtractToDirectory(install.Location);
+                zip.ExtractToDirectory(install.Location, true);
 
                 await File.WriteAllTextAsync(install.BepInExVersionFile, latest.Id.ToString());
             }
