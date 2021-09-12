@@ -43,7 +43,7 @@ namespace ModPackageGenerator
                 if (filePath.Contains(ModPackageManifest.ManifestFileName))
                     continue;
 
-                var rebasedPath = filePath.Replace(PackageFolder, "").TrimStart('/');
+                var rebasedPath = filePath.Replace(PackageFolder, "").Replace('\\', '/').TrimStart('/');
                 AddFile(rebasedPath, $"{BucketUrl}/{AmongUsVersion}/{rebasedPath}", FileExtensions.Sha256Hash(filePath));
             }
 
