@@ -20,7 +20,7 @@ namespace ClientLauncher
         public static string BepInExGithubOrg => "NuclearPowered";
         public static string BepInExGithubRepo => "BepInEx";
         // public static string BucketUrl => "https://launcher.asset.polus.gg";
-        public static string BucketUrl => "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/";
+        public static string BucketUrl => "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com";
         
         //TODO: hardcode value later
         public static string CosmeticsUrl => "http://cosmetics.service.polus.gg:2219";

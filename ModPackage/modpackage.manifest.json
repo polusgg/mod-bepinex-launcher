@@ -1,80 +1,150 @@
 {
-  "version": 32,
+  "version": 1,
   "files": [
     {
       "installPath": "region.txt",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/region.txt",
-      "sha256": "51F40EA4E3F1823C0C2806C0433FE807A3F6202E8FC6E411BCA73CFD219BB48B"
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/region.txt",
+      "sha256": "C9FCAC3FC7C43D4D4A253AC4888E12881B4AE91DDB76475C55BBECEE6B47A750"
     },
     {
       "installPath": "steam_appid.txt",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/steam_appid.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/steam_appid.txt",
       "sha256": "52D19B26FB6F59CF5C387CDC31209DE1D6F440531107D207966584E8226847D4"
     },
     {
-      "installPath": "mono/Managed/Newtonsoft.Json.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
-      "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
+      "installPath": "BepInEx/config/BepInEx.cfg",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/config/BepInEx.cfg",
+      "sha256": "868148407D3C504ED647ACD381E5BA8653D3ACFE9428917A8A9CF4E444222050"
     },
     {
-      "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "sha256": "5FF2CFF5EAFBFDF744ACCE2757D7470E72F9A83DC9EF094FE37539871AE17FE7"
+      "installPath": "BepInEx/config/com.sinai.unityexplorer.cfg",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/config/com.sinai.unityexplorer.cfg",
+      "sha256": "27410CFBE9074F99E22A7CEAD71A7E732E29BBDC5D76DEC88809E982C319D502"
+    },
+    {
+      "installPath": "BepInEx/core/AssemblyUnhollower.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/core/AssemblyUnhollower.dll",
+      "sha256": "B547BB1243148D9A819AB749D763C4263F0CE85876D466913BF6B0CDB3F0482C"
     },
     {
       "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/UnhollowerBaseLib.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/core/UnhollowerBaseLib.dll",
       "sha256": "34D9A072EE77A448DE46E9A052A0159E16D438D478340718D548BD24DC4BA4C4"
     },
     {
       "installPath": "BepInEx/core/UnhollowerRuntimeLib.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/UnhollowerRuntimeLib.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/core/UnhollowerRuntimeLib.dll",
       "sha256": "134561D629B5C2BCD191D78F5276BF6915641B78AF0FC36D0C8CA329C856EF73"
     },
     {
-      "installPath": "BepInEx/core/AssemblyUnhollower.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/AssemblyUnhollower.dll",
-      "sha256": "B547BB1243148D9A819AB749D763C4263F0CE85876D466913BF6B0CDB3F0482C"
-    },
-    {
-      "installPath": "BepInEx/plugins/PolusggSlim.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
-      "sha256": "5E4E72D62FE17A6D8FAE8228C968B1DFE5D1AFD563E96CB63422C42C5FF92F3D"
-    },
-    {
-      "installPath": "BepInEx/plugins/Polus.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "1FB7ABBFC209934D7DA2D7DE3C07DC601FAFAFDA662E83919EF292AD01FD8C81"
+      "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "sha256": "5FF2CFF5EAFBFDF744ACCE2757D7470E72F9A83DC9EF094FE37539871AE17FE7"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/Essentials.PluginLoader.dll",
       "sha256": "651C06979A99FB83915025575A40E6ECB148DA646C3F3FE94468C9FA784B95B5"
     },
     {
-      "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
-      "sha256": "AA8852D7320492384A9B1EAA381B53B85C2605505B03A0235A95291D0EF5D75A"
+      "installPath": "BepInEx/plugins/Polus.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/Polus.dll",
+      "sha256": "F2D2BEB47A2D0ABC1CE82E43E61A84255B11D4CEA8D0E700B1378C7300FC84DF"
     },
     {
-      "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
-      "sha256": "0CAAC23A414D18D3EB20AF8DE52A238680D0C60B804CBDCA9F97B496B93D63CF"
+      "installPath": "BepInEx/plugins/PolusggSlim.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
+      "sha256": "E5DE62FA3118F51731D085935F78B4A15EBF7570B63209DBFD24B87B9B8C976F"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer.BIE.IL2CPP.dll",
+      "sha256": "828D540CF1284A9C81CC1E60EA8AAF345EB492239CF63AC357B7A7B37EA806AF"
+    },
+    {
+      "installPath": "mono/Managed/Newtonsoft.Json.dll",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
+      "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
+    },
+    {
+      "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
+      "sha256": "D42B93079874B52829D30D8142E2059D6A1D47D335E7C9E7B549F2CB69FD61E8"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "sha256": "18BB6DE024FD88A8E9BDBF5F21D29B42188E294E85A5AC7CC708C2EF308ABCA7"
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
+      "sha256": "722046D9E143305D9E847244547710F4AC8E5EE8EFB0DD2A9E8AD69EB3032E57"
+    },
+    {
+      "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
+      "sha256": "EE8A390809B2823052BA6A8F71179589B2296917BCAA3B42DB86621FA3975B93"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/data.ini",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/data.ini",
+      "sha256": "6B81AFD7816B29D7BA63F17BD0665CDE3877C5A851E56B9BE48960969DFC9FF6"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_3bc9e46f8fa59c67eefa715de6f83c3c.bundle",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_3bc9e46f8fa59c67eefa715de6f83c3c.bundle",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_3bc9e46f8fa59c67eefa715de6f83c3c.bundle",
       "sha256": "882EC624D09919AB684BEE7A23602F9E702F522350BBE3460A2D0E39366D5660"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_unitybuiltinshaders_3fcad82fee4d50fe119f4ba5a9907528.bundle",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_unitybuiltinshaders_3fcad82fee4d50fe119f4ba5a9907528.bundle",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_unitybuiltinshaders_3fcad82fee4d50fe119f4ba5a9907528.bundle",
       "sha256": "306DFE8DD597E609937DFFB7BA9714973DDAA94DDDB4FB049BF9B70C8CF14739"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 163012Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 163012Z.txt",
+      "sha256": "A11627C718831FA816D85FD7A542B40F26A262D291A76C59B48FB70652E9516D"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 163056Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 163056Z.txt",
+      "sha256": "79DA1AA59E950CCF74FB2E62F69007714827CBA56D29D744281F7392191DC87C"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165253Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165253Z.txt",
+      "sha256": "4E418C7EE89A3B99926D1BEF1610107A2E7E96F302D4B0E22B42F4B309839664"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165321Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165321Z.txt",
+      "sha256": "F572262180D5B1532AFA649811593B9E8B29DE18E1A7D9A95BBCE120E67D7361"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165703Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 165703Z.txt",
+      "sha256": "1D8DA28E24F3554AEDD3CE2FF3A771E3CFDFDD2AAD6A4362C892850DC9AD8C4F"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171315Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171315Z.txt",
+      "sha256": "827B019FF43A0D8F0480EF85EC1A4C56D3EEC03630A18A0F522BA1FD2912C01D"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171331Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171331Z.txt",
+      "sha256": "20DE7BC295932E54DD25B2F44DAF429048A81A07840ED346E74599729C1ADB21"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171336Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 171336Z.txt",
+      "sha256": "9F52905F80509EDFF267E82D1678820D1B4A657D40B74089AA5185D67F69C77E"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 195744Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 195744Z.txt",
+      "sha256": "A69E82C943BEB96BDF187E882D9525C6D8C10B2276A8B9A5F5FFFD4DA6F55F11"
+    },
+    {
+      "installPath": "BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 210208Z.txt",
+      "downloadUrl": "https://polusgg-mod-client-private.nyc3.digitaloceanspaces.com/2021.6.30/BepInEx/plugins/UnityExplorer/Logs/UnityExplorer 2021-09-15 210208Z.txt",
+      "sha256": "6C12825F9EBA56DA4469DC5D3932D0A23D4A6542114CE81D8B5EB6CD39BEB60E"
     }
   ]
 }
