@@ -26,7 +26,7 @@ namespace ClientLauncher.Services.Api
 
         public async Task<ModPackageManifest> GetModPackageManifestAsync(string version)
         {
-            Console.WriteLine($"{Context.BucketUrl}/{version}/{ModPackageManifest.ManifestFileName}");
+            LoggingService.LogError($"{Context.BucketUrl}/{version}/{ModPackageManifest.ManifestFileName}");
             var manifest = await _client.GetFromJsonAsync<ModPackageManifest>($"{Context.BucketUrl}/{version}/{ModPackageManifest.ManifestFileName}");
             if (manifest is null)
                 throw new InvalidOperationException($"Download manifest.json was not found for version {version}");

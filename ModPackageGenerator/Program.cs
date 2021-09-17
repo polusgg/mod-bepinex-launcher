@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ClientLauncher;
 using ClientLauncher.Models;
 
 namespace ModPackageGenerator
@@ -13,9 +14,10 @@ namespace ModPackageGenerator
             if (!args.Any())
                 Console.WriteLine("No package folder provided!");
 
-            var bucketUrl = (string) args.GetValue(0);
-            var amongUsVersion = (string) args.GetValue(1);
-            var packageDirectory = (string) args.GetValue(2);
+            // var bucketUrl = (string) args.GetValue();
+            var bucketUrl = Context.BucketUrl;
+            var amongUsVersion = (string) args.GetValue(0);
+            var packageDirectory = (string) args.GetValue(1);
 
             if (bucketUrl is not null && amongUsVersion is not null && packageDirectory is not null)
             {

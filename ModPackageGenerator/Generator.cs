@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace ModPackageGenerator
     public class Generator
     {
         private readonly List<ModPackageFile> _files = new();
+
+        private readonly string[] ignoredFiles = new[] {
+            "BepInEx.cfg",
+            "UnityExplorer"
+        };
 
         public string PackageFolder { get; }
         public string BucketUrl { get; }
@@ -40,7 +46,7 @@ namespace ModPackageGenerator
         {
             foreach (var filePath in Directory.EnumerateFiles(PackageFolder, "*", SearchOption.AllDirectories))
             {
-                if (filePath.Contains(ModPackageManifest.ManifestFileName))
+                if (ignoredFiles.Any(path => filePath.ToLower().Contains(path.ToLower())))
                     continue;
 
                 var rebasedPath = filePath.Replace(PackageFolder, "").Replace('\\', '/').TrimStart('/');

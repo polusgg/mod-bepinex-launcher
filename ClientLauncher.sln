@@ -6,17 +6,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModPackageGenerator", "ModP
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|Steam = Debug|Steam
+		Debug|Epic = Debug|Epic
+		Release|Epic = Release|Epic
+		Release|Steam = Release|Steam
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Steam.ActiveCfg = Debug|Steam
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Steam.Build.0 = Debug|Steam
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Epic.ActiveCfg = Release|Epic
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Epic.Build.0 = Release|Epic
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Epic.ActiveCfg = Debug|Epic
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Debug|Epic.Build.0 = Debug|Epic
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Steam.ActiveCfg = Release|Steam
+		{5F91554B-B4DE-41C4-9E50-4FD1777A2FB1}.Release|Steam.Build.0 = Release|Steam
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Steam.ActiveCfg = Debug|Steam
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Steam.Build.0 = Debug|Steam
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Epic.ActiveCfg = Release|Epic
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Epic.Build.0 = Release|Epic
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Epic.ActiveCfg = Debug|Epic
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Debug|Epic.Build.0 = Debug|Epic
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Steam.ActiveCfg = Release|Steam
+		{B27F9C78-FB4A-4D74-8470-C46330134407}.Release|Steam.Build.0 = Release|Steam
 	EndGlobalSection
 EndGlobal

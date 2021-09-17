@@ -8,6 +8,13 @@
         <Version>0.2.8</Version>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DefineConstants>DEBUG;PRIVATE</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DefineConstants>RELEASE;PUBLIC</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
