@@ -34,11 +34,11 @@ namespace ClientLauncher
                 Console.Write($"Error initializing Steam API: {e.Message}\n{e.StackTrace}");
             }
             
-            LoggingService.ClearLog();
 
             CreateConfiguration();
+            LoggingService.CreateLogFile();
             
-            LoggingService.LogError(new GameInstall().ModPackageManifestJson);
+            LoggingService.Log(new GameInstall().ModPackageManifestJson);
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
             

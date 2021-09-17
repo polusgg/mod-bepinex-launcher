@@ -29,7 +29,7 @@ namespace ClientLauncher.Extensions
                 if (Directory.Exists(filePath) && Path.GetFileName(filePath) != "Among Us_Data")
                     continue;
 
-                var rebasedPath = filePath.Replace(basePath, "").TrimStart('/');
+                var rebasedPath = filePath.Replace(basePath, "").TrimStart('/').TrimStart('\\');
                 rebasedPath = Path.Join(newInstallPath, rebasedPath);
 
                 var baseDir = Path.GetDirectoryName(rebasedPath);

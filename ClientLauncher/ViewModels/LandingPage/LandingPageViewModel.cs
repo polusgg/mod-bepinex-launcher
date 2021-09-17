@@ -174,7 +174,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                     catch (Exception e)
                     {
                         IsInstallProgressing = false;
-                        LoggingService.LogError($"Couldn't setup modded install directory: {e.Message}\n{e.StackTrace}");
+                        LoggingService.Log($"Couldn't setup modded install directory: {e.Message}\n{e.StackTrace}");
                         await WarnDialog.Handle("Couldn't setup modded install directory.");
                         return;
                     }
@@ -187,7 +187,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                 catch (Exception e)
                 {
                     IsInstallProgressing = false;
-                    LoggingService.LogError($"Couldn't install BepInEx: {e.Message}\n{e.StackTrace}");
+                    LoggingService.Log($"Couldn't install BepInEx: {e.Message}\n{e.StackTrace}");
                     await WarnDialog.Handle("Couldn't install BepInEx.");
                     return;
                 }
@@ -199,7 +199,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                 catch (Exception e)
                 {
                     IsInstallProgressing = false;
-                    LoggingService.LogError($"Exception installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
+                    LoggingService.Log($"Exception installing Polus.gg mod: {e.Message}\n{e.StackTrace}");
                     await WarnDialog.Handle($"Couldn't install Polusgg mod.");
                     return;
                 }
@@ -211,14 +211,14 @@ namespace ClientLauncher.ViewModels.LandingPage
                 }
                 catch (Exception e)
                 {
-                    LoggingService.LogError($"Exception while launching game: {e.Message}\n{e.StackTrace}");
+                    LoggingService.Log($"Exception while launching game: {e.Message}\n{e.StackTrace}");
                     await WarnDialog.Handle($"Caught exception when launching game.");
                 }
         
             }
             catch (Exception e)
             {
-                LoggingService.LogError($"Exception while launching game: {e.Message}\n{e.StackTrace}");
+                LoggingService.Log($"Exception while launching game: {e.Message}\n{e.StackTrace}");
                 await WarnDialog.Handle($"Unknown error when launching game.");
             }
             finally

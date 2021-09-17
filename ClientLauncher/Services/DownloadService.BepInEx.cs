@@ -32,7 +32,23 @@ namespace ClientLauncher.Services
                 Directory.CreateDirectory(install.BepInExFolder);
 
                 using var zip = new ZipArchive(zipStream);
-                zip.ExtractToDirectory(install.Location, true);
+                foreach (ZipArchiveEntry entry in zip.Entries)
+                {
+                    var zipEntryPath = Path.GetFullPath(Path.Combine(install.Location, entry.FullName));
+                    try
+                    {
+
+                        var directoryName = Path.GetDirectoryName(zipEntryPath);
+                        if (directoryName is not null)
+                            Directory.CreateDirectory(directoryName);
+                        entry.ExtractToFile(zipEntryPath, true);
+                    }
+                    catch (Exception e)
+                    {
+                        LoggingService.Log($"Couldn't extract file {entry.FullName} to path {zipEntryPath}: {e.Message}\n{e.StackTrace}");   
+                    }
+                }
+
 
                 await File.WriteAllTextAsync(install.BepInExVersionFile, latest.Id.ToString());
             }
