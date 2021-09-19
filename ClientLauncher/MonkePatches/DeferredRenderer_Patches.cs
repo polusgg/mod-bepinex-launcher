@@ -1,5 +1,7 @@
 using System;
 using System.Reflection;
+using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Rendering;
 using HarmonyLib;
 
@@ -25,17 +27,21 @@ namespace ClientLauncher.MonkePatches
         }
     }
     
-    [HarmonyPatch]
-    public static class DeferredRenderer_Render_Patch
+    [HarmonyPatch(typeof(TopLevel), "HandlePaint")]
+    public static class TopLevel_HandlePaint_Patch
     {
-        public static MethodBase TargetMethod() => AccessTools.Method(
-            AccessTools.TypeByName(nameof(Avalonia.Rendering.DeferredRenderer)), "Render", new[] { typeof(bool) });
-        public static Exception Finalizer(Exception __exception)
+        public static bool Prefix(TopLevel __instance, [HarmonyArgument(0)] Rect rect)
         {
-            if (__exception.Message.Contains("Invalid create info - no Canvas provided"))
-                return null;
-            
-            return __exception;
+            try
+            {
+                __instance.Renderer?.Paint(rect);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Possible error creating a SkiaCanvas: {e.Message}\n{e.StackTrace}");
+            }
+
+            return false;
         }
     }
 }
