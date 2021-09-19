@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Avalonia.Rendering;
 using HarmonyLib;
@@ -21,6 +22,20 @@ namespace ClientLauncher.MonkePatches
             }
 
             return _trueRenderMethod is null;
+        }
+    }
+    
+    [HarmonyPatch]
+    public static class DeferredRenderer_Render_Patch
+    {
+        public static MethodBase TargetMethod() => AccessTools.Method(
+            AccessTools.TypeByName(nameof(Avalonia.Rendering.DeferredRenderer)), "Render", new[] { typeof(bool) });
+        public static Exception Finalizer(Exception __exception)
+        {
+            if (__exception.Message.Contains("Invalid create info - no Canvas provided"))
+                return null;
+            
+            return __exception;
         }
     }
 }
