@@ -16,6 +16,7 @@ using HarmonyLib;
 using Newtonsoft.Json;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Steamworks;
 
 namespace ClientLauncher.ViewModels.LandingPage
 {
@@ -49,7 +50,8 @@ namespace ClientLauncher.ViewModels.LandingPage
         public ICommand InstallGame { get; }
         
         public ICommand OnClickCosmeticsButton { get; }
-        public ICommand OnClickDataPathButton { get; }
+        public ICommand OnClickCleanInstall { get; }
+        public ICommand OnClickModdedInstallPath { get; }
 
         public Interaction<Unit, string?> FileChooserDialog { get; }
         public Interaction<string, Unit> WarnDialog { get; }
@@ -121,13 +123,20 @@ namespace ClientLauncher.ViewModels.LandingPage
                 }
             });
 
-            OnClickDataPathButton = ReactiveCommand.CreateFromTask(async () =>
+            OnClickCleanInstall = ReactiveCommand.CreateFromTask(async () =>
             {
                 if (Directory.Exists(Context.ModdedAmongUsLocation))
                     Directory.Delete(Context.ModdedAmongUsLocation, true);
 
                 await InstallGameAsync();
             });
+
+            OnClickModdedInstallPath = ReactiveCommand.CreateFromTask(async () => Process.Start(new ProcessStartInfo
+            {
+                UseShellExecute = true,
+                Verb = "open",
+                FileName = Context.ModdedAmongUsLocation + Path.DirectorySeparatorChar
+            }));
 
             this.WhenAnyValue(x => x.VanillaAmongUsLocation).Subscribe(_ => UpdateManifestVersion());
         }
@@ -164,6 +173,14 @@ namespace ClientLauncher.ViewModels.LandingPage
 
         private async Task InstallGameAsync()
         {
+            // Backwards compatibility
+            if (SteamClient.IsValid)
+            {
+                var directoryPath = SteamApps.AppInstallDir(new AppId { Value = 1653240 });
+                if (Directory.Exists(directoryPath))
+                    Directory.Delete(directoryPath, true);
+            }
+            
             var vanillaInstall = new GameInstall
             {
                 Location = VanillaAmongUsLocation
