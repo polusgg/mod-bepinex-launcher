@@ -89,7 +89,37 @@ namespace ClientLauncher.ViewModels.LandingPage
 
             InstallGame = ReactiveCommand.CreateFromTask(InstallGameAsync);
 
-            OnClickCosmeticsButton = ReactiveCommand.CreateFromTask(async () => MainWindowViewModel.Instance.SwitchViewTo(new CosmeticsViewModel()));
+            OnClickCosmeticsButton = ReactiveCommand.CreateFromTask(async () =>
+            {
+                try
+                {
+                    if (File.Exists(Path.Combine(Context.ModdedAmongUsLocation, "api.txt")))
+                    {
+                        var model = GameVersionService.GetAuthModel();
+                        if (model.LoggedInDateTime < DateTime.Now.AddDays(-5))
+                        {
+                            var response = await Context.ApiClient.CheckToken(model.ClientIdString, model.ClientToken);
+                            if (response.Data.ClientToken == model.ClientToken)
+                            {
+                                await MainWindowViewModel.Instance.SwitchViewTo(new CosmeticsViewModel());
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            await MainWindowViewModel.Instance.SwitchViewTo(new CosmeticsViewModel());
+                            return;
+                        }
+                    }
+                    
+                    await WarnDialog.Handle("You aren't logged in to Polus.gg in Among Us!");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"{e.Message}\n{e.StackTrace}");
+                    await WarnDialog.Handle("You aren't logged in to Polus.gg in Among Us!");
+                }
+            });
 
             OnClickDataPathButton = ReactiveCommand.CreateFromTask(async () =>
             {
