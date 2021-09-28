@@ -15,10 +15,12 @@ namespace ModPackageGenerator
     {
         private readonly List<ModPackageFile> _files = new();
 
+        #if RELEASE
         private readonly string[] ignoredFiles = new[] {
             "BepInEx.cfg",
             "UnityExplorer"
         };
+        #endif
 
         public string PackageFolder { get; }
         public string BucketUrl { get; }
