@@ -129,17 +129,17 @@
                     
                     <TextBox IsReadOnly="True" FontWeight="Light" Text="{Binding VanillaAmongUsLocation}" />
 
-                    <StackPanel Orientation="Vertical" Margin="0 20 0 0">
-                        <TextBlock VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   Margin="0 0 0 12"
-                                   FontSize="16"
-                                   FontWeight="Light">
-                            Settings
-                        </TextBlock>
-                        <CheckBox Content="Automatically launch game next time?" IsEnabled="False"
-                                  IsChecked="{Binding AutoLaunch}" />
-                    </StackPanel>
+                    <!-- <StackPanel Orientation="Vertical" Margin="0 20 0 0"> -->
+                    <!--     <TextBlock VerticalAlignment="Center" -->
+                    <!--                HorizontalAlignment="Left" -->
+                    <!--                Margin="0 0 0 12" -->
+                    <!--                FontSize="16" -->
+                    <!--                FontWeight="Light"> -->
+                    <!--         Settings -->
+                    <!--     </TextBlock> -->
+                    <!--     <CheckBox Content="Automatically launch game next time?" IsEnabled="False" -->
+                    <!--               IsChecked="{Binding AutoLaunch}" /> -->
+                    <!-- </StackPanel> -->
                     <TextBlock Classes="Caption" 
                                HorizontalAlignment="Right"
                                FontWeight="Light"
