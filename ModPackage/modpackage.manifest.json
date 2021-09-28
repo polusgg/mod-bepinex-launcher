@@ -1,25 +1,45 @@
 {
-  "version": 36,
+  "version": 37,
   "files": [
-    {
-      "installPath": "modpackage.manifest.json",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/modpackage.manifest.json",
-      "sha256": "36CB11914ACA8FD30BD6D51DE1FE4D8E3CA326FA982C33E9AF0B43F0007FBF97"
-    },
-    {
-      "installPath": "region.txt",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/region.txt",
-      "sha256": "C9FCAC3FC7C43D4D4A253AC4888E12881B4AE91DDB76475C55BBECEE6B47A750"
-    },
     {
       "installPath": "steam_appid.txt",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/steam_appid.txt",
       "sha256": "52D19B26FB6F59CF5C387CDC31209DE1D6F440531107D207966584E8226847D4"
     },
     {
-      "installPath": "BepInEx/core/AssemblyUnhollower.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/AssemblyUnhollower.dll",
-      "sha256": "B547BB1243148D9A819AB749D763C4263F0CE85876D466913BF6B0CDB3F0482C"
+      "installPath": "modpackage.manifest.json",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/modpackage.manifest.json",
+      "sha256": "6D565F8DCB7CDFFD0C69F6C872BDBD3AD9B82C704D7D529812808F9F6A48C524"
+    },
+    {
+      "installPath": "mono/Managed/Newtonsoft.Json.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
+      "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
+    },
+    {
+      "installPath": "mono/Managed/System.ServiceModel.Internals.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/System.ServiceModel.Internals.dll",
+      "sha256": "5952F0580DCB49666419C707E83AC770DF86A606325E0489DC8BC7A1E7EBB2B6"
+    },
+    {
+      "installPath": "mono/Managed/System.Transactions.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/System.Transactions.dll",
+      "sha256": "DC185D48FAAB5EBC4A817A877146FE6724D5EC1215A43C4FE2CC781E4B8D2662"
+    },
+    {
+      "installPath": "mono/Managed/Sentry.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Sentry.dll",
+      "sha256": "68C5917B5214862A5762036E11F0D54560A507D892FB255C625072037568A43F"
+    },
+    {
+      "installPath": "mono/Managed/System.Reflection.Metadata.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/System.Reflection.Metadata.dll",
+      "sha256": "2E180767F1415CB5BBED14450E1D4003CF56A9DA6AEAF91CE969A4B9D2A54314"
+    },
+    {
+      "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
+      "sha256": "5FF2CFF5EAFBFDF744ACCE2757D7470E72F9A83DC9EF094FE37539871AE17FE7"
     },
     {
       "installPath": "BepInEx/core/UnhollowerBaseLib.dll",
@@ -32,9 +52,19 @@
       "sha256": "134561D629B5C2BCD191D78F5276BF6915641B78AF0FC36D0C8CA329C856EF73"
     },
     {
-      "installPath": "BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/patchers/Essentials.PluginPreloader.dll",
-      "sha256": "5FF2CFF5EAFBFDF744ACCE2757D7470E72F9A83DC9EF094FE37539871AE17FE7"
+      "installPath": "BepInEx/core/AssemblyUnhollower.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/core/AssemblyUnhollower.dll",
+      "sha256": "B547BB1243148D9A819AB749D763C4263F0CE85876D466913BF6B0CDB3F0482C"
+    },
+    {
+      "installPath": "BepInEx/plugins/PolusggSlim.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
+      "sha256": "4AFDB05FDD47D3ABB5C4ABFC25670BFD9289EE6D6A0755ADCA63EFA0709159D2"
+    },
+    {
+      "installPath": "BepInEx/plugins/Polus.dll",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
+      "sha256": "E13B32EE4B2ADA42D140A0DC49A7206B04AE23DBB201499640154EFEA6A35DDE"
     },
     {
       "installPath": "BepInEx/plugins/Essentials.PluginLoader.dll",
@@ -42,34 +72,19 @@
       "sha256": "651C06979A99FB83915025575A40E6ECB148DA646C3F3FE94468C9FA784B95B5"
     },
     {
-      "installPath": "BepInEx/plugins/Polus.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/Polus.dll",
-      "sha256": "59CF9F19BA1592283FDF0F7E0EADCEBB0A991C1E12CED28B366E3D3517B767CC"
-    },
-    {
-      "installPath": "BepInEx/plugins/PolusggSlim.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/PolusggSlim.dll",
-      "sha256": "E5DE62FA3118F51731D085935F78B4A15EBF7570B63209DBFD24B87B9B8C976F"
-    },
-    {
-      "installPath": "mono/Managed/Newtonsoft.Json.dll",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/mono/Managed/Newtonsoft.Json.dll",
-      "sha256": "7F912B28A07C226E0BE3ACFB2F57F050538ABA0100FA1F0BF2C39F1A1F1DA814"
-    },
-    {
       "installPath": "Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/Among Us_Data/StreamingAssets/aa/catalog-extra-Low.json",
-      "sha256": "D42B93079874B52829D30D8142E2059D6A1D47D335E7C9E7B549F2CB69FD61E8"
-    },
-    {
-      "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
-      "sha256": "722046D9E143305D9E847244547710F4AC8E5EE8EFB0DD2A9E8AD69EB3032E57"
+      "sha256": "AA8852D7320492384A9B1EAA381B53B85C2605505B03A0235A95291D0EF5D75A"
     },
     {
       "installPath": "BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
       "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Mods.Submerged.subplugin",
       "sha256": "EE8A390809B2823052BA6A8F71179589B2296917BCAA3B42DB86621FA3975B93"
+    },
+    {
+      "installPath": "BepInEx/plugins/subplugins/Essentials.Common.subplugin",
+      "downloadUrl": "https://launcher.asset.polus.gg/2021.6.30/BepInEx/plugins/subplugins/Essentials.Common.subplugin",
+      "sha256": "722046D9E143305D9E847244547710F4AC8E5EE8EFB0DD2A9E8AD69EB3032E57"
     },
     {
       "installPath": "Among Us_Data/StreamingAssets/aa/StandaloneWindows/submerged_assets_all_3bc9e46f8fa59c67eefa715de6f83c3c.bundle",
