@@ -171,6 +171,17 @@ namespace ClientLauncher.ViewModels.LandingPage
             ManifestVersion = string.Join(", ", versionString);
         }
 
+        private void AddLauncherInfo() {
+            var moddedInstall = new GameInstall
+            {
+                Location = Context.ModdedAmongUsLocation
+            };
+
+            File.WriteAllText(moddedInstall.LauncherClientInfoJson, JsonConvert.SerializeObject(new LauncherClientInfo {
+                LauncherVersion = SteamClient.IsValid ? SteamApps.BuildId : -1
+            }));
+        }
+
         private async Task InstallGameAsync()
         {
             // Backwards compatibility
@@ -254,6 +265,7 @@ namespace ClientLauncher.ViewModels.LandingPage
                 try
                 {
                     UpdateManifestVersion();
+                    AddLauncherInfo();
                     await moddedInstall.LaunchGame();
                 }
                 catch (Exception e)

@@ -25,6 +25,7 @@ namespace ClientLauncher.Models
 
         // Specific paths for downloaded hashes/manifests
         public string BepInExVersionFile => Path.Combine(BepInExFolder, "version.txt");
+        public string LauncherClientInfoJson => Path.Combine(Location, LauncherClientInfo.LauncherInfoName);
         public string ModPackageManifestJson => Path.Combine(Location, ModPackageManifest.ManifestFileName);
     }
 }
