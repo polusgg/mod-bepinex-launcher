@@ -19,7 +19,7 @@ namespace ModPackageGenerator
             var amongUsVersion = (string) args.GetValue(0);
             var packageDirectory = (string) args.GetValue(1);
 
-            if (bucketUrl is not null && amongUsVersion is not null && packageDirectory is not null)
+            if (amongUsVersion is not null && packageDirectory is not null)
             {
                 if (Directory.Exists(packageDirectory))
                 {
@@ -28,6 +28,14 @@ namespace ModPackageGenerator
                     await generator.GenerateAsync();
                     Console.WriteLine($"Mod package manifest written to ({generator.PackageFolder}/{ModPackageManifest.ManifestFileName})");
                 }
+                else
+                {
+                    await Console.Error.WriteLineAsync("Failed, there's no dir!");
+                }
+            }
+            else
+            {
+                await Console.Error.WriteLineAsync("Failed!");
             }
         }
     }

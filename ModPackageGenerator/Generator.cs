@@ -20,6 +20,8 @@ namespace ModPackageGenerator
             "BepInEx.cfg",
             "UnityExplorer"
         };
+        #else
+        private readonly string[] ignoredFiles = Array.Empty<string>();
         #endif
 
         public string PackageFolder { get; }
