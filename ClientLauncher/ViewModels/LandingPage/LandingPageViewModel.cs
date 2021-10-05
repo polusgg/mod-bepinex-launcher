@@ -16,6 +16,7 @@ using HarmonyLib;
 using Newtonsoft.Json;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Steamworks;
 
 namespace ClientLauncher.ViewModels.LandingPage
 {
