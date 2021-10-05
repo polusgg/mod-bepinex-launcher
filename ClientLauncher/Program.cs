@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using Avalonia;
 using Avalonia.ReactiveUI;
 using ClientLauncher.Models;
@@ -7,6 +8,8 @@ using ClientLauncher.MonkePatches;
 using ClientLauncher.Services;
 using Newtonsoft.Json;
 using Octokit;
+using Sentry;
+using Sentry.Reflection;
 using Steamworks;
 using ApiClient = ClientLauncher.Services.Api.ApiClient;
 
@@ -23,6 +26,16 @@ namespace ClientLauncher
             
             Context.GithubClient = new GitHubClient(new ProductHeaderValue("polusgg-client-launcher"));
             Context.ApiClient = new ApiClient();
+
+            using var disposable = SentrySdk.Init(o =>
+            {
+                o.Dsn = "https://1d7e56371934416e84bd9ddc1596b1ba@o1016669.ingest.sentry.io/5982062";
+                o.Release = $"Launcher - v{typeof(Program).Assembly.GetNameAndVersion().Version}";
+                // Set traces_sample_rate to 1.0 to capture 100% of transactions for performance monitoring.
+                // We recommend adjusting this value in production.
+                o.TracesSampleRate = 1.0;
+            });
+            SentrySdk.StartSession();
 
             try
             {

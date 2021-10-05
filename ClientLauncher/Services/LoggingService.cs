@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using Sentry;
+using Steamworks.Data;
 
 namespace ClientLauncher.Services
 {

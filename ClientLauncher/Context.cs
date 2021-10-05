@@ -29,12 +29,17 @@ namespace ClientLauncher
         public static string CosmeticsUrl => "http://cosmetics.service.polus.gg:2219";
         public static string AccountServerUrl => "https://account.polus.gg";
 
-        public static string DataPath => Path.Combine(
+        public static string DataPath => SteamClient.IsValid ? SteamInstallDirDataPath : AppdataDataPath;
+        
+        private static string AppdataDataPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             ".polusgg-client"
         );
 
-        public static string ConfigPath => Path.Combine(DataPath, "config.json");
+        private static string SteamInstallDirDataPath => SteamApps.AppInstallDir(new AppId { Value = 1653240 });
+        
+
+        public static string ConfigPath => Path.Combine(AppdataDataPath, "config.json");
         public static string ModdedAmongUsLocation => Path.Combine(DataPath, "modded");
         public static string CachePath => Path.Combine(DataPath, "cache");
 

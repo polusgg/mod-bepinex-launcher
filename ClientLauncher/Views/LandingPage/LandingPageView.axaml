@@ -41,23 +41,11 @@
                 Height="64" Width="120"
                 Margin="12 0 0 0"
                 Classes="Flat"
-                Command="{Binding OnClickCleanInstall}"
+                Command="{Binding OnClickDataPathButton}"
                 assists:ButtonAssist.CornerRadius="16">
                 <StackPanel Orientation="Vertical">
                     <avalonia:MaterialIcon Kind="Restore" Foreground="White"/>
                     <TextBlock Text="Clean Install" Foreground="White"/>
-                </StackPanel>
-            </Button>
-            <Button
-                HorizontalAlignment="Left" VerticalAlignment="Center"
-                Height="64" Width="120"
-                Margin="120 0 0 0"
-                Classes="Flat"
-                Command="{Binding OnClickModdedInstallPath}"
-                assists:ButtonAssist.CornerRadius="16">
-                <StackPanel Orientation="Vertical">
-                    <avalonia:MaterialIcon Kind="Folder" Foreground="White"/>
-                    <TextBlock Text="Install Folder" Foreground="White"/>
                 </StackPanel>
             </Button>
             <Panel
