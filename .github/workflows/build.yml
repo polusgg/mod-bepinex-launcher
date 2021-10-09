@@ -42,5 +42,5 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*"
-          "ClientLauncher/bin/Debug/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*"
+          "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher.Release**"
+          "ClientLauncher/bin/Debug/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher.Debug**"
