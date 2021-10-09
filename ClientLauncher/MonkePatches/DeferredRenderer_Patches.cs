@@ -27,21 +27,21 @@ namespace ClientLauncher.MonkePatches
         }
     }
     
-    [HarmonyPatch(typeof(TopLevel), "HandlePaint")]
-    public static class TopLevel_HandlePaint_Patch
-    {
-        public static bool Prefix(TopLevel __instance, [HarmonyArgument(0)] Rect rect)
-        {
-            try
-            {
-                __instance.Renderer?.Paint(rect);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine($"Possible error creating a SkiaCanvas: {e.Message}\n{e.StackTrace}");
-            }
-
-            return false;
-        }
-    }
+    // [HarmonyPatch(typeof(TopLevel), "HandlePaint")]
+    // public static class TopLevel_HandlePaint_Patch
+    // {
+    //     public static bool Prefix(TopLevel __instance, [HarmonyArgument(0)] Rect rect)
+    //     {
+    //         try
+    //         {
+    //             __instance.Renderer?.Paint(rect);
+    //         }
+    //         catch (ArgumentException e)
+    //         {
+    //             Console.WriteLine($"Possible error creating a SkiaCanvas: {e.Message}\n{e.StackTrace}");
+    //         }
+    //
+    //         return false;
+    //     }
+    // }
 }

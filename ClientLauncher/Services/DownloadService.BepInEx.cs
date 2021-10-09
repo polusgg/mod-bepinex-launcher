@@ -4,6 +4,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using ClientLauncher.Models;
+using Sentry;
 
 namespace ClientLauncher.Services
 {
@@ -41,11 +42,16 @@ namespace ClientLauncher.Services
                         var directoryName = Path.GetDirectoryName(zipEntryPath);
                         if (directoryName is not null)
                             Directory.CreateDirectory(directoryName);
+                        
+                        if (entry.FullName == "winhttp.dll")
+                            await File.WriteAllTextAsync(zipEntryPath, "placeholder");
+                            
                         entry.ExtractToFile(zipEntryPath, true);
                     }
                     catch (Exception e)
                     {
                         LoggingService.Log($"Couldn't extract file {entry.FullName} to path {zipEntryPath}: {e.Message}\n{e.StackTrace}");   
+                        SentrySdk.CaptureException(e);
                     }
                 }
 
