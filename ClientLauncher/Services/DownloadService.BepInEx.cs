@@ -27,6 +27,8 @@ namespace ClientLauncher.Services
 
                 await using var zipStream = await Context.ApiClient.DownloadFileAsync(releaseAsset.BrowserDownloadUrl);
 
+                foreach (var fileName in GameIntegrityService.BepinexFiles)
+                    File.Delete(Path.Combine(install.Location, fileName));
                 if (Directory.Exists(install.BepInExFolder))
                     Directory.Delete(install.BepInExFolder, true);
 

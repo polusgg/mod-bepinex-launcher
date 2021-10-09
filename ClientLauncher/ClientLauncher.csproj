@@ -10,9 +10,11 @@
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DefineConstants>DEBUG;PRIVATE</DefineConstants>
+        <AssemblyName>$(MSBuildProjectName).Debug</AssemblyName>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>RELEASE;PUBLIC</DefineConstants>
+        <AssemblyName>$(MSBuildProjectName).Release</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

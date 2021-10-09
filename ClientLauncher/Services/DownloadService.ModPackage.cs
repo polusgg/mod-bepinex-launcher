@@ -16,14 +16,14 @@ namespace ClientLauncher.Services
             
             if (GameVersionService.TryGetModPackageManifest(install, out var manifest))
             {
-                if (newManifest.Version > manifest.Version)
+                if (newManifest.Version != manifest.Version)
                 {
                     await FreshInstallAsync(install, manifest, newManifest);
                 }
                 else
                 {
                     if (manifest.Files.Select(x => Path.Combine(install.Location, x.InstallPath)).Any(x => !File.Exists(x) && !Directory.Exists(x)))
-                       await FreshInstallAsync(install, manifest, newManifest);
+                       await FreshInstallAsync(install, manifest, manifest);
                 }
             }
             else
