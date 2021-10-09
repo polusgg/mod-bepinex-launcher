@@ -30,14 +30,17 @@ jobs:
       run: dotnet restore
       working-directory: "./ClientLauncher"
     
-    - name: Publish for ${{ matrix.os }}
+    - name: Publish Release configuration for ${{ matrix.os }} 
       run: dotnet publish -c Release -r ${{ matrix.publishRID }} -p:PublishSingleFile=true --self-contained=true -p:IncludeNativeLibrariesForSelfExtract=true
       working-directory: "./ClientLauncher"
       
-    - name: Upload Release Asset
-      uses: xresloader/upload-to-github-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish Debug configuration for ${{ matrix.os }}
+      run: dotnet publish -c Debug -r ${{ matrix.publishRID }} -p:PublishSingleFile=true --self-contained=true -p:IncludeNativeLibrariesForSelfExtract=true
+      working-directory: "./ClientLauncher"
+      
+    - name: Release
+      uses: softprops/action-gh-release@v1
       with:
-        file: "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*;!**.xml;!**.pdb"
-        draft: false
+        files: |
+          "ClientLauncher/bin/Release/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*"
+          "ClientLauncher/bin/Debug/net5.0/${{ matrix.publishRID }}/publish/ClientLauncher*"
